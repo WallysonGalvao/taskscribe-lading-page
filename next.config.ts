@@ -61,6 +61,20 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      {
+        // Don't apply CSP to Next.js static files
+        source: "/_next/:path*",
+        headers: securityHeaders.filter(
+          (header) => header.key !== "Content-Security-Policy"
+        ),
+      },
+      {
+        // Don't apply CSP to static assets
+        source: "/static/:path*",
+        headers: securityHeaders.filter(
+          (header) => header.key !== "Content-Security-Policy"
+        ),
+      },
     ];
   },
 
