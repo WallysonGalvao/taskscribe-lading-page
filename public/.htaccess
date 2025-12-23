@@ -1,5 +1,4 @@
-# MIME Types - MUST be before Passenger config
-
+# MIME Types
 AddType text/css .css
 AddType application/javascript .js
 AddType text/javascript .js
@@ -17,27 +16,29 @@ ForceType text/css
 ForceType application/javascript
 </FilesMatch>
 
-# Allow access to Next.js static files (\_next directory)
-
-<IfModule mod_authz_core.c>
-  <Directory "/home/u255583227/domains/taskscribe.com.br/public_html/_next">
-    Require all granted
-  </Directory>
-</IfModule>
-
-# Remove CSP header from static assets to prevent blocking
-
-<FilesMatch "\.(css|js|woff|woff2|svg|jpg|jpeg|png|gif|webp|ico)$">
-<IfModule mod_headers.c>
-Header unset Content-Security-Policy
-Header set Cache-Control "public, max-age=31536000, immutable"
-</IfModule>
-</FilesMatch>
-
 # Passenger Configuration
-
+PassengerEnabled on
 PassengerAppRoot /home/u255583227/domains/taskscribe.com.br/public_html
 PassengerAppType node
 PassengerNodejs /opt/alt/alt-nodejs22/root/bin/node
 PassengerStartupFile server.js
 PassengerBaseURI /
+
+# Allow access to all files
+<IfModule mod_authz_core.c>
+  Require all granted
+</IfModule>
+
+# Cache static assets
+<FilesMatch "\.(css|js|woff|woff2|svg|jpg|jpeg|png|gif|webp|ico)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </IfModule>
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# Follow symbolic links
+Options +FollowSymLinks
+
