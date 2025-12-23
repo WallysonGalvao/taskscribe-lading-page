@@ -25,9 +25,19 @@ interface MobileMenuProps {
   releaseAssets?: ReleaseAssets;
 }
 
-const PLATFORMS: Platform[] = ["Windows", "Mac Intel", "Mac Apple Silicon", "Linux"];
+const PLATFORMS: Platform[] = [
+  "Windows",
+  "Mac Intel",
+  "Mac Apple Silicon",
+  "Linux",
+];
 
-export function MobileMenu({ isOpen, navLinks, onClose, releaseAssets }: MobileMenuProps) {
+export function MobileMenu({
+  isOpen,
+  navLinks,
+  onClose,
+  releaseAssets,
+}: MobileMenuProps) {
   const { t } = useTranslation();
   const [downloadOpen, setDownloadOpen] = useState(false);
 
@@ -74,7 +84,9 @@ export function MobileMenu({ isOpen, navLinks, onClose, releaseAssets }: MobileM
               {t("header.download")}
             </span>
             <ChevronDown
-              className={`w-4 h-4 transition-transform ${downloadOpen ? "rotate-180" : ""}`}
+              className={`w-4 h-4 transition-transform ${
+                downloadOpen ? "rotate-180" : ""
+              }`}
             />
           </Button>
 
@@ -96,7 +108,7 @@ export function MobileMenu({ isOpen, navLinks, onClose, releaseAssets }: MobileM
         {/* Settings Row */}
         <div className="flex gap-2 pt-2">
           <div className="flex-1">
-            <LanguageSwitcher />
+            <LanguageSwitcher showLabel className="w-full" />
           </div>
           <div className="flex-1">
             <ThemeSwitcher showLabel className="w-full" />

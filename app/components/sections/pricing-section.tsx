@@ -24,9 +24,12 @@ export function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-16 sm:py-24 bg-secondary/30">
+    <section id="pricing" className="py-16 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t("pricing.title")} subtitle={t("pricing.subtitle")} />
+        <SectionHeader
+          title={t("pricing.title")}
+          subtitle={t("pricing.subtitle")}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           <PricingCard

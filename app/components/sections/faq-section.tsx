@@ -28,7 +28,7 @@ export function FaqSection({ onContactClick }: FaqSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <section id="faq" className="py-16 sm:py-24">
+    <section id="faq" className="py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title={t("faq.title")} subtitle={t("faq.subtitle")} />
 
@@ -48,7 +48,11 @@ export function FaqSection({ onContactClick }: FaqSectionProps) {
           <p className="text-sm sm:text-base text-muted-foreground mb-4">
             {t("faq.stillHaveQuestions")}
           </p>
-          <Button variant="outline" onClick={onContactClick} className="w-full sm:w-auto">
+          <Button
+            variant="outline"
+            onClick={onContactClick}
+            className="w-full sm:w-auto"
+          >
             {t("faq.contactUs")}
           </Button>
         </div>

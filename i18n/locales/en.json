@@ -8,6 +8,9 @@
     "howItWorks": "How It Works",
     "faq": "FAQ",
     "download": "Download",
+    "language": {
+      "label": "Language"
+    },
     "theme": {
       "label": "Theme",
       "light": "Light",

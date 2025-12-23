@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 interface LanguageSwitcherProps {
+  showLabel?: boolean;
   className?: string;
 }
 
@@ -20,19 +21,30 @@ const LANGUAGES = [
   { code: "en", label: "🇺🇸 English" },
 ];
 
-export function LanguageSwitcher({ className = "" }: LanguageSwitcherProps) {
-  const { i18n } = useTranslation();
+export function LanguageSwitcher({
+  showLabel = false,
+  className = "",
+}: LanguageSwitcherProps) {
+  const { i18n, t } = useTranslation();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className={className}>
-          <Languages className="w-4 h-4" />
+        <Button
+          variant={showLabel ? "outline" : "ghost"}
+          size="sm"
+          className={className}
+        >
+          <Languages className={showLabel ? "w-4 h-4 mr-2" : "w-4 h-4"} />
+          {showLabel ? t("header.language.label") : null}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {LANGUAGES.map((lang) => (
-          <DropdownMenuItem key={lang.code} onClick={() => i18n.changeLanguage(lang.code)}>
+          <DropdownMenuItem
+            key={lang.code}
+            onClick={() => i18n.changeLanguage(lang.code)}
+          >
             {lang.label}
           </DropdownMenuItem>
         ))}

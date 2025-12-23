@@ -17,7 +17,10 @@ interface ThemeSwitcherProps {
   className?: string;
 }
 
-export function ThemeSwitcher({ showLabel = false, className = "" }: ThemeSwitcherProps) {
+export function ThemeSwitcher({
+  showLabel = false,
+  className = "",
+}: ThemeSwitcherProps) {
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
 
@@ -26,7 +29,11 @@ export function ThemeSwitcher({ showLabel = false, className = "" }: ThemeSwitch
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={showLabel ? "outline" : "ghost"} size="sm" className={className}>
+        <Button
+          variant={showLabel ? "outline" : "ghost"}
+          size="sm"
+          className={className}
+        >
           <ThemeIcon className={showLabel ? "w-4 h-4 mr-2" : "w-4 h-4"} />
           {showLabel ? t("header.theme.label") : null}
         </Button>
@@ -40,10 +47,10 @@ export function ThemeSwitcher({ showLabel = false, className = "" }: ThemeSwitch
           <Moon className="w-4 h-4 mr-2" />
           {t("header.theme.dark")}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        {/* <DropdownMenuItem onClick={() => setTheme("system")}>
           <Monitor className="w-4 h-4 mr-2" />
           {t("header.theme.system")}
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

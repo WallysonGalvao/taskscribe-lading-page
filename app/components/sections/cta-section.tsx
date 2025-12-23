@@ -15,7 +15,7 @@ export function CtaSection({ releaseAssets }: CtaSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <section className="py-16 sm:py-24 bg-secondary/30">
+    <section className="py-16 bg-secondary/30">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="p-6 sm:p-8 md:p-12 bg-card border-accent/20">
           <div className="text-center">

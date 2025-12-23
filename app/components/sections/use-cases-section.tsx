@@ -26,7 +26,7 @@ export function UseCasesSection() {
   const { t } = useTranslation();
 
   return (
-    <section id="use-cases" className="py-16 sm:py-24 bg-secondary/30">
+    <section id="use-cases" className="py-16 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t("useCases.title")}

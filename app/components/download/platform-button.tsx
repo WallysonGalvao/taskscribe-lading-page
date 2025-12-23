@@ -3,6 +3,8 @@
 import { Apple, Monitor } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import { LinuxIcon } from "./linux-icon";
+
 export type Platform = "Windows" | "Mac Intel" | "Mac Apple Silicon" | "Linux";
 
 interface PlatformButtonProps {
@@ -14,7 +16,7 @@ interface PlatformButtonProps {
 const PLATFORM_CONFIG: Record<
   Platform,
   {
-    icon: typeof Monitor | typeof Apple;
+    icon: typeof Monitor | typeof Apple | typeof LinuxIcon;
     titleKey: string;
     noteKey: string;
   }
@@ -35,13 +37,17 @@ const PLATFORM_CONFIG: Record<
     noteKey: "hero.platforms.macSiliconNote",
   },
   Linux: {
-    icon: Monitor,
+    icon: LinuxIcon,
     titleKey: "hero.platforms.linux",
     noteKey: "hero.platforms.linuxNote",
   },
 };
 
-export function PlatformButton({ platform, onClick, iconSize = "md" }: PlatformButtonProps) {
+export function PlatformButton({
+  platform,
+  onClick,
+  iconSize = "md",
+}: PlatformButtonProps) {
   const { t } = useTranslation();
   const config = PLATFORM_CONFIG[platform];
   const Icon = config.icon;
@@ -55,7 +61,9 @@ export function PlatformButton({ platform, onClick, iconSize = "md" }: PlatformB
     >
       <Icon className={`${iconClassName} text-muted-foreground`} />
       <div className="flex-1">
-        <div className="text-sm font-medium text-foreground">{t(config.titleKey)}</div>
+        <div className="text-sm font-medium text-foreground">
+          {t(config.titleKey)}
+        </div>
         <div className="text-xs text-muted-foreground">{t(config.noteKey)}</div>
       </div>
     </button>
