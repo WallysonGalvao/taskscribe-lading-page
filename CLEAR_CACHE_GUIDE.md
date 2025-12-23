@@ -40,6 +40,7 @@ Se um dispositivo acessa normalmente e outro não (mesma rede), o servidor está
 ### Passo 4: Hard Reload
 
 Feche as DevTools e:
+
 - **Mac:** Cmd + Shift + R
 - **Windows/Linux:** Ctrl + Shift + R
 - **Ou:** Cmd/Ctrl + Shift + Delete → Limpar dados de navegação
@@ -126,6 +127,7 @@ Limpar Cache:            Cmd/Ctrl + Shift + Delete
 ## ⚠️ Importante
 
 O erro "client-side exception" indica que:
+
 - ✅ O servidor está OK
 - ✅ O HTML está sendo carregado
 - ❌ O JavaScript/CSS em cache está desatualizado

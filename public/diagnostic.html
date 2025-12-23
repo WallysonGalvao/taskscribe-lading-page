@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnóstico - TaskScribe</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        pre { background: #f0f0f0; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Diagnóstico TaskScribe</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = type;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+        
+        // Testar carregamento de assets
+        async function testAssets() {
+            log('<h2>1. Testando Assets Estáticos</h2>');
+            
+            // Obter o build ID
+            const buildIdResponse = await fetch('/_next/static/chunks/webpack.js');
+            log(`Build ID request: ${buildIdResponse.status} ${buildIdResponse.statusText}`, 
+                buildIdResponse.ok ? 'success' : 'error');
+            
+            // Testar CSS
+            const cssTest = await fetch('/_next/static/css/app/layout.css');
+            log(`CSS test: ${cssTest.status}`, cssTest.ok ? 'success' : 'error');
+        }
+        
+        // Verificar Service Workers
+        function checkServiceWorkers() {
+            log('<h2>2. Service Workers</h2>');
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    if (registrations.length === 0) {
+                        log('✅ Nenhum service worker registrado', 'success');
+                    } else {
+                        log(`❌ ${registrations.length} service worker(s) encontrado(s):`, 'error');
+                        registrations.forEach((reg, i) => {
+                            log(`  ${i + 1}. ${reg.scope}`, 'error');
+                        });
+                    }
+                });
+            } else {
+                log('Service Workers não suportados');
+            }
+        }
+        
+        // Verificar Storage
+        function checkStorage() {
+            log('<h2>3. Local Storage / Session Storage</h2>');
+            log(`Local Storage: ${localStorage.length} itens`);
+            log(`Session Storage: ${sessionStorage.length} itens`);
+            
+            if (localStorage.length > 0) {
+                log('Conteúdo do LocalStorage:', 'error');
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    log(`  ${key}: ${localStorage.getItem(key).substring(0, 50)}...`);
+                }
+            }
+        }
+        
+        // Verificar Cookies
+        function checkCookies() {
+            log('<h2>4. Cookies</h2>');
+            const cookies = document.cookie.split(';');
+            log(`Total de cookies: ${cookies.length}`);
+            cookies.forEach(cookie => {
+                log(`  ${cookie.trim()}`);
+            });
+        }
+        
+        // Info do navegador
+        function browserInfo() {
+            log('<h2>5. Informações do Navegador</h2>');
+            log(`User Agent: ${navigator.userAgent}`);
+            log(`Cookies Habilitados: ${navigator.cookieEnabled}`);
+            log(`Online: ${navigator.onLine}`);
+        }
+        
+        // Executar testes
+        browserInfo();
+        checkServiceWorkers();
+        checkStorage();
+        checkCookies();
+        testAssets();
+        
+        log('<hr><p><strong>Próximos passos:</strong></p>');
+        log('<p>1. Se houver service workers, desregistre-os em DevTools → Application → Service Workers</p>');
+        log('<p>2. Se houver itens em Local/Session Storage, limpe em DevTools → Application → Storage → Clear site data</p>');
+        log('<p>3. Feche completamente o navegador e reabra</p>');
+    </script>
+</body>
+</html>
