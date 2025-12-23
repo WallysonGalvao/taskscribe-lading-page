@@ -50,15 +50,6 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // Output standalone para garantir que todos os arquivos estejam disponíveis
-  output: "standalone",
-
-  // Garantir que os assets sejam servidos corretamente
-  generateBuildId: async () => {
-    // Usar timestamp para evitar cache de builds antigas
-    return `build-${Date.now()}`;
-  },
-
   // Security headers for all routes
   async headers() {
     return [
