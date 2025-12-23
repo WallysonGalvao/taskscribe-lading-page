@@ -1,0 +1,391 @@
+{
+  "app": {
+    "name": "TaskScribe"
+  },
+  "header": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "howItWorks": "How It Works",
+    "faq": "FAQ",
+    "download": "Download",
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "hero": {
+    "badge": "Launch Offer - 5 Free Transcriptions",
+    "title": "Transcribe videos and meetings with AI",
+    "titleHighlight": "100% local",
+    "subtitle": "Transform audio and video into accurate text with AI. Local processing, total privacy, no data sent to the cloud. Start free today.",
+    "cta": "Download Free - 5 Free Transcriptions/Month",
+    "note": "No registration. No credit card. Start in 2 minutes.",
+    "platforms": {
+      "windows": "Windows",
+      "windowsNote": "Windows 10 or higher",
+      "macIntel": "Mac (Intel)",
+      "macIntelNote": "macOS 11 or higher",
+      "macSilicon": "Mac (Apple Silicon)",
+      "macSiliconNote": "M1, M2, M3, M4",
+      "linux": "Linux",
+      "linuxNote": "Ubuntu, Fedora, Debian"
+    }
+  },
+  "painPoints": {
+    "title": "Tired of",
+    "titleHighlight": "compromising your privacy",
+    "titleSuffix": "for transcriptions?",
+    "subtitle": "Cloud services expose your sensitive data. TaskScribe solves this.",
+    "cloud": {
+      "title": "Store your data in the cloud?",
+      "description": "Your confidential meetings and interviews stay on third-party servers, exposed to leaks and unauthorized access."
+    },
+    "cost": {
+      "title": "Charge per minute of audio?",
+      "description": "Costs that rise quickly with long videos. $0.10 per minute = $6 for an hour of meeting."
+    },
+    "creditCard": {
+      "title": "Require credit card to test?",
+      "description": "You need to provide financial data before even knowing if the service works well for your case."
+    },
+    "solution": {
+      "title": "TaskScribe solves all these problems.",
+      "description": "100% local. No per-minute charges. No credit card."
+    }
+  },
+  "features": {
+    "title": "Features that make a difference",
+    "subtitle": "Built for professionals who value privacy, accuracy and productivity",
+    "privacy": {
+      "title": "Total Privacy",
+      "description": "100% local processing. Your data never leaves your computer, ensuring absolute confidentiality."
+    },
+    "ai": {
+      "title": "Advanced AI",
+      "description": "State-of-the-art models for accurate transcription, even with accents and technical terms."
+    },
+    "speakers": {
+      "title": "Speaker Identification",
+      "description": "Automatically recognizes and differentiates who is speaking in meetings and interviews."
+    },
+    "tasks": {
+      "title": "Task Extraction (Optional)",
+      "description": "Automatically identifies actions, commitments and tasks with AI (OpenAI, Google Gemini or local Ollama)."
+    },
+    "formats": {
+      "title": "Multiple Formats",
+      "description": "Import MP4, MKV, MOV, AVI, MP3, WAV, M4A. Export to TXT, MD, JSON and SRT (subtitles)."
+    },
+    "performance": {
+      "title": "Optimized Performance",
+      "description": "Fast processing making the most of your computer's GPU and CPU."
+    },
+    "multilingual": {
+      "title": "Multilingual Support",
+      "description": "Interface in Portuguese and English. Transcription in over 99 languages with Whisper."
+    },
+    "detailed": {
+      "transcription": {
+        "title": "High Precision Transcription",
+        "description": "Powered by Faster-Whisper, the same OpenAI technology but 4x faster and running 100% on your computer.",
+        "bullets": {
+          "languages": "10+ languages supported",
+          "autoDetect": "Automatic language detection",
+          "gpuAcceleration": "GPU Acceleration (NVIDIA CUDA)",
+          "models": "7 models: from fast to ultra-precise"
+        }
+      },
+      "speakers": {
+        "title": "Speaker Identification",
+        "description": "Know exactly who said what. Perfect for meetings, interviews and podcasts.",
+        "bullets": {
+          "autoDetection": "Automatic participant detection",
+          "rename": "Rename speakers with real names",
+          "colors": "Distinct colors for each person",
+          "statistics": "Speaking time statistics"
+        }
+      },
+      "aiTasks": {
+        "title": "AI Task Extraction",
+        "description": "Turn meetings into actions. AI automatically identifies tasks, decisions and next steps.",
+        "bullets": {
+          "providers": "GPT-4, Gemini or Ollama (100% local)",
+          "meetingNotes": "Generate formatted meeting notes",
+          "actionItems": "Create action item checklists",
+          "summaries": "Executive summaries with 1 click"
+        }
+      },
+      "export": {
+        "title": "Export to Any Format",
+        "description": "Your content, your way. Flexible export to all formats.",
+        "bullets": {
+          "formats": "TXT, Markdown, JSON",
+          "srt": "SRT for subtitles (YouTube ready!)",
+          "timestamps": "Word-by-word timestamps",
+          "bySpeaker": "Export by specific speaker"
+        }
+      }
+    }
+  },
+  "pricing": {
+    "title": "Simple and transparent pricing",
+    "subtitle": "Start free, upgrade when you need. No surprises.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/month",
+      "description": "To try TaskScribe",
+      "features": {
+        "transcriptions": "5 transcriptions per month",
+        "duration": "Up to 60 minutes per file",
+        "local": "100% local processing",
+        "speakers": "Speaker identification",
+        "models": "7 Whisper models",
+        "export": "Export TXT, MD, JSON, SRT",
+        "support": "Community support"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "🔥 Most Popular",
+      "price": "$19",
+      "period": "/month",
+      "yearlyNote": "or $190/year (save 17%)",
+      "features": {
+        "everything": "Everything in Free",
+        "unlimited": "Unlimited transcriptions",
+        "noDuration": "No duration limit",
+        "ai": "AI task extraction",
+        "llms": "OpenAI + Gemini + Ollama",
+        "gpu": "Priority GPU acceleration",
+        "support": "Priority email support"
+      },
+      "cta": "Subscribe to Pro"
+    }
+  },
+  "howItWorks": {
+    "title": "Simple to use, powerful in results",
+    "subtitle": "Three steps to transform your recordings into organized information",
+    "step1": {
+      "title": "Import your file",
+      "description": "Drag and drop videos or audios. Support for MP4, MOV, MP3, WAV and much more."
+    },
+    "step2": {
+      "title": "Choose the model",
+      "description": "Select the appropriate Whisper model. Larger models = higher accuracy. Everything processed locally."
+    },
+    "step3": {
+      "title": "Transcribe and edit",
+      "description": "Get your transcription in minutes. Edit, identify speakers, extract tasks and export in the format you need."
+    }
+  },
+  "security": {
+    "title": "Your data is exclusively yours",
+    "subtitle": "In a world where privacy is increasingly rare, TaskScribe ensures that your meetings, interviews and recordings remain confidential. No external servers, no cloud storage, no data sharing.",
+    "features": {
+      "offline": {
+        "title": "Works 100% Offline",
+        "description": "No internet connection needed. Everything happens on your computer."
+      },
+      "noCloud": {
+        "title": "No Cloud, No Uploads",
+        "description": "Your files never leave your machine. Zero data sent to external servers."
+      },
+      "openSource": {
+        "title": "Open Source Technology",
+        "description": "Based on Whisper (OpenAI) and other open tools. No black boxes."
+      },
+      "gdpr": {
+        "title": "GDPR Compliant",
+        "description": "Since there is no data collection, you are automatically in compliance with privacy laws."
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about TaskScribe",
+    "questions": {
+      "internet": {
+        "q": "Do I need internet to use TaskScribe?",
+        "a": "No! TaskScribe works 100% offline. Transcription is done locally on your computer. You only need internet to download the app initially and, optionally, to use AI features like task extraction with OpenAI or Gemini."
+      },
+      "requirements": {
+        "q": "What are the system requirements?",
+        "a": "Windows 10+, macOS 11+ or Linux (Ubuntu, Fedora, Debian). We recommend 8GB of RAM and 5GB of disk space. NVIDIA GPU with CUDA is optional but greatly accelerates processing."
+      },
+      "pricing": {
+        "q": "How much does TaskScribe cost?",
+        "a": "We have a free plan with 5 free transcriptions per month. The Pro plan costs $19/month (or $190/year with 17% discount) and offers unlimited transcriptions + AI features for task extraction."
+      },
+      "storage": {
+        "q": "Where is my data saved?",
+        "a": "All data is saved only on your computer, in the app's local folder. Nothing is sent to external servers. You have full control over your files."
+      },
+      "formats": {
+        "q": "What audio and video formats are supported?",
+        "a": "We import: MP4, MKV, MOV, AVI, WebM, MP3, WAV, M4A, AAC, FLAC and more. We export transcriptions in: TXT, Markdown (MD), JSON and SRT (subtitles)."
+      },
+      "languages": {
+        "q": "How many languages are supported?",
+        "a": "Whisper supports over 99 languages including Portuguese, English, Spanish, French, German, Italian, Japanese, Chinese, Korean and many others. The interface is available in PT-BR and EN-US."
+      },
+      "diarization": {
+        "q": "What is speaker identification (Speaker Diarization)?",
+        "a": "It's the ability to recognize and separate who is speaking in a recording with multiple people. TaskScribe automatically identifies different voices and marks each speech as SPEAKER_00, SPEAKER_01, etc. You can rename them later."
+      },
+      "gpu": {
+        "q": "Do I need a GPU to use it?",
+        "a": "Not mandatory! TaskScribe works with CPU too, but will be slower. If you have an NVIDIA GPU with CUDA, processing can be up to 4x faster."
+      }
+    },
+    "stillHaveQuestions": "Still have questions?",
+    "contactUs": "Contact Us"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Send your message and we'll get back to you soon",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name",
+        "error": "Name must be at least 2 characters",
+        "errorMax": "Name too long (max 100 characters)"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com",
+        "error": "Invalid email",
+        "errorMax": "Email too long"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "How can we help?",
+        "error": "Message must be at least 10 characters",
+        "errorMax": "Message too long (max 5000 characters)"
+      },
+      "cancel": "Cancel",
+      "submit": "Send",
+      "sending": "Sending...",
+      "success": {
+        "title": "Message sent successfully!",
+        "description": "We'll get back to you soon."
+      },
+      "error": {
+        "title": "Error sending message",
+        "description": "Please try again.",
+        "rateLimit": "Too many attempts",
+        "rateLimitDescription": "Please wait a moment before trying again."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to transcribe with total privacy?",
+    "subtitle": "Download now and get 5 free transcriptions. No registration, no credit card. Start in less than 2 minutes.",
+    "download": "Download Free",
+    "note": "Available for Windows, macOS and Linux"
+  },
+  "useCases": {
+    "title": "Perfect for professionals who value privacy",
+    "subtitle": "From the office to the clinic, TaskScribe adapts to your needs",
+    "cases": {
+      "meetings": {
+        "title": "Business Meetings",
+        "description": "Turn meetings into action items. Never miss important decisions or next steps again."
+      },
+      "podcasts": {
+        "title": "Podcasts & Interviews",
+        "description": "Create searchable show notes and episodes. Make editing and content repurposing easier."
+      },
+      "education": {
+        "title": "Classes & Lectures",
+        "description": "Transcribe courses and lectures for review. Ideal for students and educators."
+      },
+      "interviews": {
+        "title": "Job Interviews",
+        "description": "Questions and answers organized by speaker. Structured review for effective hiring."
+      },
+      "legal": {
+        "title": "Legal",
+        "description": "Depositions and hearings with total confidentiality. Compliance with privacy regulations."
+      },
+      "healthcare": {
+        "title": "Healthcare",
+        "description": "Medical consultations in HIPAA/GDPR compliance. Total privacy for sensitive patient data."
+      }
+    }
+  },
+  "footer": {
+    "description": "AI audio and video transcription, 100% local and private. Your data never leaves your computer.",
+    "copyright": "© 2025 TaskScribe. All rights reserved.",
+    "madeWith": "Made with ❤️ for privacy-conscious professionals",
+    "sections": {
+      "product": "Product",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "links": {
+      "download": "Download",
+      "changelog": "Changelog",
+      "roadmap": "Roadmap",
+      "docs": "Documentation",
+      "faq": "FAQ",
+      "support": "Support",
+      "privacy": "Privacy",
+      "terms": "Terms of Use"
+    }
+  },
+  "seo": {
+    "metadata": {
+      "title": "TaskScribe - AI-Powered Audio Transcription | 100% Local & Private",
+      "titleTemplate": "%s | TaskScribe",
+      "description": "Audio and video transcription with 100% local AI. Guaranteed privacy, speaker identification and automatic task extraction. Start free with 5 transcriptions. Windows, macOS and Linux.",
+      "keywords": "audio transcription, video transcription, local AI, privacy, speaker identification, whisper, faster-whisper, offline transcription, meetings, subtitles, SRT, GDPR"
+    },
+    "openGraph": {
+      "title": "TaskScribe - AI-Powered Audio Transcription | 100% Local & Private",
+      "description": "Transform audio and video to text with 100% local AI. Total privacy, speaker detection, task extraction. Free to start!",
+      "imageAlt": "TaskScribe - AI-Powered Audio Transcription"
+    },
+    "twitter": {
+      "title": "TaskScribe - AI-Powered Audio Transcription | 100% Local & Private",
+      "description": "Transform audio and video to text with 100% local AI. Total privacy, speaker detection, task extraction. Free to start!"
+    },
+    "ogImage": {
+      "tagline": "AI-Powered Audio Transcription • 100% Local & Private",
+      "features": {
+        "privacy": "🔒 Total Privacy",
+        "speakers": "🎙️ Speaker Detection",
+        "gpu": "⚡ GPU Accelerated"
+      }
+    },
+    "schema": {
+      "organization": {
+        "name": "TaskScribe",
+        "contactType": "customer support"
+      },
+      "software": {
+        "description": "Audio and video transcription with 100% local AI. Guaranteed privacy, speaker identification and automatic task extraction.",
+        "features": [
+          "100% local processing",
+          "Speaker identification",
+          "AI task extraction",
+          "Support for 99+ languages",
+          "Export to TXT, MD, JSON, SRT",
+          "GPU acceleration (NVIDIA CUDA)"
+        ],
+        "offers": {
+          "free": {
+            "name": "Free",
+            "description": "5 transcriptions per month, local processing, speaker identification"
+          },
+          "pro": {
+            "name": "Pro",
+            "description": "Unlimited transcriptions, AI task extraction, priority support"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "app": {
+    "name": "TaskScribe"
+  },
+  "header": {
+    "features": "Recursos",
+    "pricing": "Preços",
+    "howItWorks": "Como Funciona",
+    "faq": "FAQ",
+    "download": "Download",
+    "theme": {
+      "label": "Tema",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "hero": {
+    "badge": "Oferta de Lançamento - 5 Transcrições Grátis",
+    "title": "Transcreva vídeos e reuniões com IA",
+    "titleHighlight": "100% local",
+    "subtitle": "Transforme áudio e vídeo em texto preciso com IA. Processamento local, privacidade total, sem enviar dados para a nuvem. Comece grátis hoje.",
+    "cta": "Baixar Grátis - 5 Transcrições Grátis/Mês",
+    "note": "Sem cadastro. Sem cartão de crédito. Comece em 2 minutos.",
+    "platforms": {
+      "windows": "Windows",
+      "windowsNote": "Windows 10 ou superior",
+      "macIntel": "Mac (Intel)",
+      "macIntelNote": "macOS 11 ou superior",
+      "macSilicon": "Mac (Apple Silicon)",
+      "macSiliconNote": "M1, M2, M3, M4",
+      "linux": "Linux",
+      "linuxNote": "Ubuntu, Fedora, Debian"
+    }
+  },
+  "painPoints": {
+    "title": "Cansado de",
+    "titleHighlight": "comprometer sua privacidade",
+    "titleSuffix": "por transcrições?",
+    "subtitle": "Serviços em nuvem expõem seus dados sensíveis. O TaskScribe resolve isso.",
+    "cloud": {
+      "title": "Armazenam seus dados na nuvem?",
+      "description": "Suas reuniões confidenciais e entrevistas ficam em servidores de terceiros, expostas a vazamentos e acessos não autorizados."
+    },
+    "cost": {
+      "title": "Cobram por minuto de áudio?",
+      "description": "Custos que sobem rapidamente com vídeos longos. R$ 0,50 por minuto = R$ 30 para uma hora de reunião."
+    },
+    "creditCard": {
+      "title": "Exigem cartão de crédito para testar?",
+      "description": "Você precisa fornecer dados financeiros antes mesmo de saber se o serviço funciona bem para seu caso."
+    },
+    "solution": {
+      "title": "TaskScribe resolve todos esses problemas.",
+      "description": "100% local. Sem cobrança por minuto. Sem cartão de crédito."
+    }
+  },
+  "features": {
+    "title": "Recursos que fazem a diferença",
+    "subtitle": "Desenvolvido para profissionais que valorizam privacidade, precisão e produtividade",
+    "privacy": {
+      "title": "Privacidade Total",
+      "description": "Processamento 100% local. Seus dados nunca saem do seu computador, garantindo confidencialidade absoluta."
+    },
+    "ai": {
+      "title": "IA Avançada",
+      "description": "Modelos de última geração para transcrição precisa, mesmo com sotaques e termos técnicos."
+    },
+    "speakers": {
+      "title": "Identificação de Falantes",
+      "description": "Reconhece e diferencia automaticamente quem está falando em reuniões e entrevistas."
+    },
+    "tasks": {
+      "title": "Extração de Tarefas (Opcional)",
+      "description": "Identifica automaticamente ações, compromissos e tarefas com IA (OpenAI, Google Gemini ou Ollama local)."
+    },
+    "formats": {
+      "title": "Múltiplos Formatos",
+      "description": "Importa MP4, MKV, MOV, AVI, MP3, WAV, M4A. Exporta em TXT, MD, JSON e SRT (legendas)."
+    },
+    "performance": {
+      "title": "Performance Otimizada",
+      "description": "Processamento rápido aproveitando ao máximo a GPU e CPU do seu computador."
+    },
+    "multilingual": {
+      "title": "Suporte Multilíngue",
+      "description": "Interface em Português e Inglês. Transcrição em mais de 99 idiomas com Whisper."
+    },
+    "detailed": {
+      "transcription": {
+        "title": "Transcrição de Alta Precisão",
+        "description": "Powered by Faster-Whisper, a mesma tecnologia da OpenAI mas 4x mais rápida e rodando 100% no seu computador.",
+        "bullets": {
+          "languages": "10+ idiomas suportados",
+          "autoDetect": "Detecção automática de idioma",
+          "gpuAcceleration": "Aceleração GPU (NVIDIA CUDA)",
+          "models": "7 modelos: do rápido ao ultra-preciso"
+        }
+      },
+      "speakers": {
+        "title": "Identificação de Speakers",
+        "description": "Saiba exatamente quem disse o quê. Perfeito para reuniões, entrevistas e podcasts.",
+        "bullets": {
+          "autoDetection": "Detecção automática de participantes",
+          "rename": "Renomeie speakers com nomes reais",
+          "colors": "Cores distintas para cada pessoa",
+          "statistics": "Estatísticas de tempo de fala"
+        }
+      },
+      "aiTasks": {
+        "title": "Extração de Tarefas com IA",
+        "description": "Transforme reuniões em ações. A IA identifica automaticamente tarefas, decisões e próximos passos.",
+        "bullets": {
+          "providers": "GPT-4, Gemini ou Ollama (100% local)",
+          "meetingNotes": "Gere atas formatadas automaticamente",
+          "actionItems": "Crie checklists de action items",
+          "summaries": "Resumos executivos com 1 clique"
+        }
+      },
+      "export": {
+        "title": "Exporte para Qualquer Formato",
+        "description": "Seu conteúdo, do seu jeito. Exportação flexível para todos os formatos.",
+        "bullets": {
+          "formats": "TXT, Markdown, JSON",
+          "srt": "SRT para legendas (YouTube ready!)",
+          "timestamps": "Timestamps palavra por palavra",
+          "bySpeaker": "Exportação por speaker específico"
+        }
+      }
+    }
+  },
+  "pricing": {
+    "title": "Preços simples e transparentes",
+    "subtitle": "Comece grátis, atualize quando precisar. Sem surpresas.",
+    "free": {
+      "name": "Grátis",
+      "price": "R$ 0",
+      "period": "/mês",
+      "description": "Para experimentar o TaskScribe",
+      "features": {
+        "transcriptions": "5 transcrições por mês",
+        "duration": "Até 60 minutos por arquivo",
+        "local": "Processamento 100% local",
+        "speakers": "Identificação de falantes",
+        "models": "7 modelos Whisper",
+        "export": "Exportação TXT, MD, JSON, SRT",
+        "support": "Suporte comunidade"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "🔥 Mais Popular",
+      "price": "R$ 47",
+      "period": "/mês",
+      "yearlyNote": "ou R$ 470/ano (economize 17%)",
+      "features": {
+        "everything": "Tudo do plano Grátis",
+        "unlimited": "Transcrições ilimitadas",
+        "noDuration": "Sem limite de duração",
+        "ai": "Extração de tarefas com IA",
+        "llms": "OpenAI + Gemini + Ollama",
+        "gpu": "Aceleração GPU prioritária",
+        "support": "Suporte prioritário via email"
+      },
+      "cta": "Assinar Plano Pro"
+    }
+  },
+  "howItWorks": {
+    "title": "Simples de usar, poderoso nos resultados",
+    "subtitle": "Três passos para transformar suas gravações em informações organizadas",
+    "step1": {
+      "title": "Importe seu arquivo",
+      "description": "Arraste e solte vídeos ou áudios. Suporte para MP4, MOV, MP3, WAV e muito mais."
+    },
+    "step2": {
+      "title": "Escolha o modelo",
+      "description": "Selecione o modelo Whisper adequado. Modelos maiores = maior precisão. Tudo processado localmente."
+    },
+    "step3": {
+      "title": "Transcreva e edite",
+      "description": "Obtenha sua transcrição em minutos. Edite, identifique speakers, extraia tarefas e exporte no formato que precisar."
+    }
+  },
+  "security": {
+    "title": "Seus dados são exclusivamente seus",
+    "subtitle": "Em um mundo onde privacidade é cada vez mais rara, o TaskScribe garante que suas reuniões, entrevistas e gravações permaneçam confidenciais. Sem servidores externos, sem armazenamento na nuvem, sem compartilhamento de dados.",
+    "features": {
+      "offline": {
+        "title": "Funciona 100% Offline",
+        "description": "Não precisa de conexão com internet. Tudo acontece no seu computador."
+      },
+      "noCloud": {
+        "title": "Sem Nuvem, Sem Uploads",
+        "description": "Seus arquivos nunca deixam sua máquina. Zero envio de dados para servidores externos."
+      },
+      "openSource": {
+        "title": "Tecnologia Open Source",
+        "description": "Baseado em Whisper (OpenAI) e outras ferramentas abertas. Sem caixas-pretas."
+      },
+      "gdpr": {
+        "title": "Compliant LGPD/GDPR",
+        "description": "Como não há coleta de dados, você está automaticamente em conformidade com leis de privacidade."
+      }
+    }
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "subtitle": "Tudo que você precisa saber sobre o TaskScribe",
+    "questions": {
+      "internet": {
+        "q": "Preciso de internet para usar o TaskScribe?",
+        "a": "Não! O TaskScribe funciona 100% offline. A transcrição é feita localmente no seu computador. Você só precisa de internet para baixar o app inicialmente e, opcionalmente, para usar features de IA como extração de tarefas com OpenAI ou Gemini."
+      },
+      "requirements": {
+        "q": "Quais são os requisitos de sistema?",
+        "a": "Windows 10+, macOS 11+ ou Linux (Ubuntu, Fedora, Debian). Recomendamos 8GB de RAM e 5GB de espaço em disco. GPU NVIDIA com CUDA é opcional mas acelera muito o processamento."
+      },
+      "pricing": {
+        "q": "Quanto custa o TaskScribe?",
+        "a": "Temos um plano gratuito com 5 transcrições grátis por mês. O plano Pro custa R$ 47/mês (ou R$ 470/ano com 17% de desconto) e oferece transcrições ilimitadas + features de IA para extração de tarefas."
+      },
+      "storage": {
+        "q": "Meus dados ficam salvos onde?",
+        "a": "Todos os dados ficam salvos apenas no seu computador, na pasta local do aplicativo. Nada é enviado para servidores externos. Você tem controle total sobre seus arquivos."
+      },
+      "formats": {
+        "q": "Quais formatos de áudio e vídeo são suportados?",
+        "a": "Importamos: MP4, MKV, MOV, AVI, WebM, MP3, WAV, M4A, AAC, FLAC e mais. Exportamos transcrições em: TXT, Markdown (MD), JSON e SRT (legendas)."
+      },
+      "languages": {
+        "q": "Quantos idiomas são suportados?",
+        "a": "O Whisper suporta mais de 99 idiomas incluindo Português, Inglês, Espanhol, Francês, Alemão, Italiano, Japonês, Chinês, Coreano e muitos outros. A interface está disponível em PT-BR e EN-US."
+      },
+      "diarization": {
+        "q": "O que é identificação de falantes (Speaker Diarization)?",
+        "a": "É a capacidade de reconhecer e separar quem está falando em uma gravação com múltiplas pessoas. O TaskScribe identifica automaticamente diferentes vozes e marca cada fala como SPEAKER_00, SPEAKER_01, etc. Você pode renomeá-los depois."
+      },
+      "gpu": {
+        "q": "Preciso de GPU para usar?",
+        "a": "Não é obrigatório! O TaskScribe funciona com CPU também, mas será mais lento. Se você tem GPU NVIDIA com CUDA, o processamento pode ser até 4x mais rápido."
+      }
+    },
+    "stillHaveQuestions": "Ainda tem dúvidas?",
+    "contactUs": "Entre em Contato"
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Envie sua mensagem e responderemos em breve",
+    "form": {
+      "name": {
+        "label": "Nome",
+        "placeholder": "Seu nome",
+        "error": "Nome deve ter pelo menos 2 caracteres",
+        "errorMax": "Nome muito longo (máximo 100 caracteres)"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "seu@email.com",
+        "error": "Email inválido",
+        "errorMax": "Email muito longo"
+      },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Como podemos ajudar?",
+        "error": "Mensagem deve ter pelo menos 10 caracteres",
+        "errorMax": "Mensagem muito longa (máximo 5000 caracteres)"
+      },
+      "cancel": "Cancelar",
+      "submit": "Enviar",
+      "sending": "Enviando...",
+      "success": {
+        "title": "Mensagem enviada com sucesso!",
+        "description": "Entraremos em contato em breve."
+      },
+      "error": {
+        "title": "Erro ao enviar mensagem",
+        "description": "Por favor, tente novamente.",
+        "rateLimit": "Muitas tentativas",
+        "rateLimitDescription": "Por favor, aguarde um momento antes de tentar novamente."
+      }
+    }
+  },
+  "cta": {
+    "title": "Pronto para transcrever com privacidade total?",
+    "subtitle": "Baixe agora e ganhe 5 transcrições grátis. Sem cadastro, sem cartão de crédito. Comece em menos de 2 minutos.",
+    "download": "Baixar Grátis",
+    "note": "Disponível para Windows, macOS e Linux"
+  },
+  "useCases": {
+    "title": "Perfeito para profissionais que valorizam privacidade",
+    "subtitle": "Do escritório ao consultório, o TaskScribe se adapta às suas necessidades",
+    "cases": {
+      "meetings": {
+        "title": "Reuniões de Negócios",
+        "description": "Transforme reuniões em atas com action items. Nunca mais perca decisões importantes ou próximos passos."
+      },
+      "podcasts": {
+        "title": "Podcasts e Entrevistas",
+        "description": "Crie show notes e episódios pesquisáveis. Facilite a edição e o reaproveitamento de conteúdo."
+      },
+      "education": {
+        "title": "Aulas e Palestras",
+        "description": "Transcreva cursos e palestras para revisão. Ideal para estudantes e educadores."
+      },
+      "interviews": {
+        "title": "Entrevistas de Emprego",
+        "description": "Perguntas e respostas organizadas por speaker. Review estruturada para contratações assertivas."
+      },
+      "legal": {
+        "title": "Área Jurídica",
+        "description": "Depoimentos e audiências com sigilo total. Conformidade com regulamentações de privacidade."
+      },
+      "healthcare": {
+        "title": "Área da Saúde",
+        "description": "Consultas médicas em conformidade com LGPD. Privacidade total para dados sensíveis de pacientes."
+      }
+    }
+  },
+  "footer": {
+    "description": "Transcrição de áudio e vídeo com IA, 100% local e privado. Seus dados nunca saem do seu computador.",
+    "copyright": "© 2025 TaskScribe. Todos os direitos reservados.",
+    "madeWith": "Feito com ❤️ para profissionais que valorizam privacidade",
+    "sections": {
+      "product": "Produto",
+      "resources": "Recursos",
+      "legal": "Legal"
+    },
+    "links": {
+      "download": "Download",
+      "changelog": "Changelog",
+      "roadmap": "Roadmap",
+      "docs": "Documentação",
+      "faq": "FAQ",
+      "support": "Suporte",
+      "privacy": "Privacidade",
+      "terms": "Termos de Uso"
+    }
+  },
+  "seo": {
+    "metadata": {
+      "title": "TaskScribe - Transcrição de Áudio com IA Local | 100% Privado",
+      "titleTemplate": "%s | TaskScribe",
+      "description": "Transcrição de áudio e vídeo com IA 100% local. Privacidade garantida, identificação de falantes e extração automática de tarefas. Comece grátis com 5 transcrições. Windows, macOS e Linux.",
+      "keywords": "transcrição de áudio, transcrição de vídeo, IA local, privacidade, identificação de falantes, whisper, faster-whisper, transcrição offline, reuniões, legendas, SRT, LGPD"
+    },
+    "openGraph": {
+      "title": "TaskScribe - Transcrição de Áudio com IA Local | 100% Privado",
+      "description": "Transforme áudio e vídeo em texto com IA 100% local. Privacidade total, identificação de falantes, extração de tarefas. Grátis para começar!",
+      "imageAlt": "TaskScribe - Transcrição de Áudio com IA Local"
+    },
+    "twitter": {
+      "title": "TaskScribe - Transcrição de Áudio com IA Local | 100% Privado",
+      "description": "Transforme áudio e vídeo em texto com IA 100% local. Privacidade total, identificação de falantes, extração de tarefas. Grátis para começar!"
+    },
+    "ogImage": {
+      "tagline": "Transcrição de Áudio com IA • 100% Local & Privado",
+      "features": {
+        "privacy": "🔒 Privacidade Total",
+        "speakers": "🎙️ Identificação de Falantes",
+        "gpu": "⚡ GPU Acelerada"
+      }
+    },
+    "schema": {
+      "organization": {
+        "name": "TaskScribe",
+        "contactType": "suporte ao cliente"
+      },
+      "software": {
+        "description": "Transcrição de áudio e vídeo com IA 100% local. Privacidade garantida, identificação de falantes e extração automática de tarefas.",
+        "features": [
+          "Processamento 100% local",
+          "Identificação de falantes",
+          "Extração de tarefas com IA",
+          "Suporte a 99+ idiomas",
+          "Exportação para TXT, MD, JSON, SRT",
+          "Aceleração GPU (NVIDIA CUDA)"
+        ],
+        "offers": {
+          "free": {
+            "name": "Grátis",
+            "description": "5 transcrições por mês, processamento local, identificação de falantes"
+          },
+          "pro": {
+            "name": "Pro",
+            "description": "Transcrições ilimitadas, extração de tarefas com IA, suporte prioritário"
+          }
+        }
+      }
+    }
+  }
+}

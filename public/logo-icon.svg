@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="waveGrad" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FFA306"/>
+    <stop offset="35%" stop-color="#F68E02"/>
+    <stop offset="65%" stop-color="#F36405"/>
+    <stop offset="100%" stop-color="#E74F09"/>
+  </linearGradient>
+</defs>
+<!-- Simplified 7-bar waveform using rects for better visibility -->
+<rect x="1" y="12" width="3" height="8" rx="1.5" fill="url(#waveGrad)"/>
+<rect x="5.5" y="9" width="3" height="14" rx="1.5" fill="url(#waveGrad)"/>
+<rect x="10" y="5" width="3" height="22" rx="1.5" fill="url(#waveGrad)"/>
+<rect x="14.5" y="3" width="3" height="26" rx="1.5" fill="url(#waveGrad)"/>
+<rect x="19" y="5" width="3" height="22" rx="1.5" fill="url(#waveGrad)"/>
+<rect x="23.5" y="9" width="3" height="14" rx="1.5" fill="url(#waveGrad)"/>
+<rect x="28" y="12" width="3" height="8" rx="1.5" fill="url(#waveGrad)"/>
+</svg>
