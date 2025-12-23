@@ -202,6 +202,35 @@ export default function RootLayout({
             `,
           }}
         />
+
+        {/* Cache Buster - Detect stale cache and reload */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var currentBuildId = '${
+                  process.env.NEXT_PUBLIC_BUILD_ID || Date.now()
+                }';
+                var storedBuildId = localStorage.getItem('taskscribe_build_id');
+                
+                // If build ID changed, clear storage and reload
+                if (storedBuildId && storedBuildId !== currentBuildId) {
+                  console.log('New build detected, clearing cache...');
+                  localStorage.clear();
+                  sessionStorage.clear();
+                  localStorage.setItem('taskscribe_build_id', currentBuildId);
+                  
+                  // Force reload without cache
+                  if (!window.location.search.includes('reloaded=1')) {
+                    window.location.href = window.location.pathname + '?reloaded=1';
+                  }
+                } else {
+                  localStorage.setItem('taskscribe_build_id', currentBuildId);
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
         <I18nProvider>
