@@ -1,0 +1,26 @@
+# MIME Types - MUST be before Passenger config
+
+AddType text/css .css
+AddType application/javascript .js
+AddType text/javascript .js
+AddType application/json .json
+AddType image/svg+xml .svg
+AddType font/woff .woff
+AddType font/woff2 .woff2
+AddType image/webp .webp
+
+<FilesMatch "\.css$">
+ForceType text/css
+</FilesMatch>
+
+<FilesMatch "\.js$">
+ForceType application/javascript
+</FilesMatch>
+
+# Passenger Configuration
+
+PassengerAppRoot /home/u255583227/domains/taskscribe.com.br/public_html
+PassengerAppType node
+PassengerNodejs /opt/alt/alt-nodejs22/root/bin/node
+PassengerStartupFile server.js
+PassengerBaseURI /

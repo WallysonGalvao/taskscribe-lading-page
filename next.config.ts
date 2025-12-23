@@ -50,6 +50,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Standalone output for Hostinger Node.js deployment
+  output: "standalone",
+
   // Security headers for all routes
   async headers() {
     return [
