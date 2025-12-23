@@ -128,9 +128,11 @@
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     
-    # Remove www (optional - consistent URLs)
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+    # Force WWW (taskscribe.com.br -> www.taskscribe.com.br)
+    # O domínio www está funcionando corretamente, sem www tem cache antigo
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
     
     # Handle Next.js static files
     RewriteCond %{REQUEST_FILENAME} !-f
