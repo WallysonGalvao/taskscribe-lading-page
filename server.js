@@ -1,25 +1,71 @@
-const { exec } = require("child_process");
-const path = require("path");
+const { createServer } = require('http');
+const { parse } = require('url');
+const next = require('next');
+const fs = require('fs');
+const path = require('path');
 
-// Simple wrapper to run next start
-const port = process.env.PORT || 3000;
-const cmd = `npx next start -p ${port}`;
+const dev = false;
+const hostname = '0.0.0.0';
+const port = parseInt(process.env.PORT || '3000', 10);
 
-console.log("Starting Next.js server...");
-console.log("Command:", cmd);
-console.log("Working directory:", __dirname);
+const app = next({ dev, hostname, port, dir: __dirname });
+const handle = app.getRequestHandler();
 
-const server = exec(cmd, { cwd: __dirname });
+console.log('Starting Next.js server...');
+console.log('Directory:', __dirname);
+console.log('Port:', port);
 
-server.stdout.on("data", (data) => {
-  console.log(data.toString());
-});
+app.prepare().then(() => {
+  createServer(async (req, res) => {
+    try {
+      // Parse URL
+      const parsedUrl = parse(req.url, true);
+      const { pathname } = parsedUrl;
 
-server.stderr.on("data", (data) => {
-  console.error(data.toString());
-});
+      // Serve static files from .next/static directly
+      if (pathname.startsWith('/_next/static/')) {
+        const filePath = path.join(__dirname, '.next', pathname.replace('/_next/', ''));
+        
+        if (fs.existsSync(filePath)) {
+          const stat = fs.statSync(filePath);
+          
+          if (stat.isFile()) {
+            // Set correct content type
+            const ext = path.extname(filePath);
+            const contentTypes = {
+              '.js': 'application/javascript',
+              '.css': 'text/css',
+              '.woff': 'font/woff',
+              '.woff2': 'font/woff2',
+              '.json': 'application/json',
+            };
+            
+            res.setHeader('Content-Type', contentTypes[ext] || 'application/octet-stream');
+            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+            
+            const fileStream = fs.createReadStream(filePath);
+            fileStream.pipe(res);
+            return;
+          }
+        }
+      }
 
-server.on("exit", (code) => {
-  console.log(`Server exited with code ${code}`);
-  process.exit(code);
+      // Let Next.js handle everything else
+      await handle(req, res, parsedUrl);
+    } catch (err) {
+      console.error('Error occurred handling', req.url, err);
+      res.statusCode = 500;
+      res.end('internal server error');
+    }
+  })
+    .once('error', (err) => {
+      console.error('Server error:', err);
+      process.exit(1);
+    })
+    .listen(port, hostname, () => {
+      console.log(`> Ready on http://${hostname}:${port}`);
+    });
+}).catch((err) => {
+  console.error('Failed to start:', err);
+  process.exit(1);
 });
