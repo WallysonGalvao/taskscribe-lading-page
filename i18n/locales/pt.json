@@ -148,6 +148,13 @@
   "pricing": {
     "title": "Preços simples e transparentes",
     "subtitle": "Comece grátis, atualize quando precisar. Sem surpresas.",
+    "billing": {
+      "monthly": "Mensal",
+      "annual": "Anual",
+      "month": "mês",
+      "year": "ano",
+      "saveBadge": "Economize 17%"
+    },
     "free": {
       "name": "Grátis",
       "price": "R$ 0",
@@ -161,14 +168,17 @@
         "models": "7 modelos Whisper",
         "export": "Exportação TXT, MD, JSON, SRT",
         "support": "Suporte comunidade"
-      }
+      },
+      "cta": "Começar Grátis"
     },
     "pro": {
       "name": "Pro",
-      "badge": "🔥 Mais Popular",
+      "badge": "Mais Popular",
       "price": "R$ 47",
       "period": "/mês",
+      "description": "Para profissionais e equipes",
       "yearlyNote": "ou R$ 470/ano (economize 17%)",
+      "yearlyDiscount": "R$ 39/mês (economize R$ 94)",
       "features": {
         "everything": "Tudo do Free +",
         "unlimited": "Transcrições ilimitadas",
@@ -178,7 +188,8 @@
         "premiumExtensions": "Extensões premium exclusivas"
       },
       "cta": "Assinar Plano Pro"
-    }
+    },
+    "footer": "Cancele a qualquer momento. Sem compromisso. Pagamento seguro via Stripe."
   },
   "howItWorks": {
     "title": "Simples de usar, poderoso nos resultados",

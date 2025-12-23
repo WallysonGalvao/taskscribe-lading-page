@@ -148,6 +148,13 @@
   "pricing": {
     "title": "Simple and transparent pricing",
     "subtitle": "Start free, upgrade when you need. No surprises.",
+    "billing": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "month": "month",
+      "year": "year",
+      "saveBadge": "Save 17%"
+    },
     "free": {
       "name": "Free",
       "price": "$0",
@@ -161,14 +168,17 @@
         "models": "7 Whisper models",
         "export": "Export TXT, MD, JSON, SRT",
         "support": "Community support"
-      }
+      },
+      "cta": "Start Free"
     },
     "pro": {
       "name": "Pro",
-      "badge": "🔥 Most Popular",
+      "badge": "Most Popular",
       "price": "$19",
       "period": "/month",
+      "description": "For professionals and teams",
       "yearlyNote": "or $190/year (save 17%)",
+      "yearlyDiscount": "$15.83/month (save $38)",
       "features": {
         "everything": "Everything in Free +",
         "unlimited": "Unlimited transcriptions",
@@ -178,7 +188,8 @@
         "premiumExtensions": "Exclusive premium extensions"
       },
       "cta": "Subscribe to Pro"
-    }
+    },
+    "footer": "Cancel anytime. No commitment. Secure payment via Stripe."
   },
   "howItWorks": {
     "title": "Simple to use, powerful in results",
