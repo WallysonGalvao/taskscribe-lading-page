@@ -54,7 +54,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Prevent caching of HTML pages
+        // Prevent caching of HTML pages - including CDN cache
         source: "/:path*",
         headers: [
           ...securityHeaders,
@@ -62,6 +62,20 @@ const nextConfig: NextConfig = {
             key: "Cache-Control",
             value:
               "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+          },
+          // CDN-specific headers to prevent edge caching
+          {
+            key: "Surrogate-Control",
+            value: "no-store",
+          },
+          {
+            key: "CDN-Cache-Control",
+            value: "no-store",
+          },
+          // Vercel/Edge specific
+          {
+            key: "Vercel-CDN-Cache-Control",
+            value: "no-store",
           },
         ],
       },

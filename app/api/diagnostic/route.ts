@@ -135,17 +135,22 @@ export async function GET() {
         log('<div class="box"><h2>6️⃣ Teste de Assets</h2>');
         log('Testando carregamento de assets...');
         
-        fetch('/_next/static/css/app/layout.css')
+        // Testa arquivo estático real (logo)
+        fetch('/logo-icon.svg')
             .then(r => {
-                log(\`CSS Status: \${r.status} \${r.statusText}\`, r.ok ? 'success' : 'error');
+                log(\`Logo SVG: \${r.status} \${r.statusText}\`, r.ok ? 'success' : 'error');
             })
             .catch(e => {
-                log(\`CSS Error: \${e.message}\`, 'error');
+                log(\`Logo SVG Error: \${e.message}\`, 'error');
             });
-            
+        
+        // Testa se consegue carregar a home
         fetch('/')
             .then(r => {
                 log(\`Home Status: \${r.status} \${r.statusText}\`, r.ok ? 'success' : 'error');
+                // Verifica content-type
+                const contentType = r.headers.get('content-type');
+                log(\`Home Content-Type: \${contentType}\`, contentType?.includes('html') ? 'success' : 'warning');
                 log('</div>');
             })
             .catch(e => {
