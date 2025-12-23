@@ -1,0 +1,76 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Permite deploy manual
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build application
+        run: yarn build
+        env:
+          NEXT_PUBLIC_APP_NAME: ${{ vars.NEXT_PUBLIC_APP_NAME || 'TaskScribe' }}
+          NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://taskscribe.com.br' }}
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
+
+      # Para Next.js com output: 'standalone' ou SSR
+      - name: Prepare deployment files
+        run: |
+          mkdir -p deploy
+          # Copy standalone build
+          cp -r .next deploy/
+          cp -r public deploy/
+          cp package.json deploy/
+          cp yarn.lock deploy/
+          cp next.config.ts deploy/
+
+          # Create production node_modules (only dependencies, not devDependencies)
+          cd deploy
+          yarn install --production --frozen-lockfile
+          cd ..
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./deploy/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/.cache/**
+            **/.next/cache/**
+
+      - name: Restart Node.js Application
+        if: success()
+        run: |
+          echo "✅ Deploy completed successfully!"
+          echo "🔄 Please restart the Node.js app in Hostinger panel if needed"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Deploy failed! Check the logs above."
