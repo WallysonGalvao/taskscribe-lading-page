@@ -54,12 +54,18 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Apply security headers to all routes
+        // Prevent caching of HTML pages
         source: "/:path*",
-        headers: securityHeaders,
+        headers: [
+          ...securityHeaders,
+          {
+            key: "Cache-Control",
+            value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+          },
+        ],
       },
       {
-        // Don't apply CSP to Next.js static files
+        // Don't apply CSP to Next.js static files but allow caching
         source: "/_next/:path*",
         headers: securityHeaders.filter(
           (header) => header.key !== "Content-Security-Policy"
