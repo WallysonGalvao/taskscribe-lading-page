@@ -21,10 +21,18 @@ import { cn } from "@/lib/utils";
 
 const FEATURES = [
   { icon: Cpu, key: "ai", image: "/features/advanced-ai.png" },
-  { icon: Users, key: "speakers", image: "/features/identifier-participants.png" },
+  {
+    icon: Users,
+    key: "speakers",
+    image: "/features/identifier-participants.png",
+  },
   { icon: CheckCircle2, key: "tasks", image: "/features/models.png" },
   { icon: FileText, key: "formats", image: "/features/multiples-formats.png" },
-  { icon: Zap, key: "performance", image: "/features/optimazed-performance.png" },
+  {
+    icon: Zap,
+    key: "performance",
+    image: "/features/optimazed-performance.png",
+  },
   { icon: Globe, key: "multilingual", image: "/features/multi-lengague.png" },
 ];
 
@@ -177,9 +185,12 @@ export function FeaturesSection() {
   }, [cardsPerPage, cardWidth, totalPages]);
 
   return (
-    <section id="features" className="py-16 sm:py-24 bg-secondary/30 overflow-hidden">
+    <section id="features" className="py-16 sm:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t("features.title")} subtitle={t("features.subtitle")} />
+        <SectionHeader
+          title={t("features.title")}
+          subtitle={t("features.subtitle")}
+        />
       </div>
 
       {/* Carousel container with controls */}

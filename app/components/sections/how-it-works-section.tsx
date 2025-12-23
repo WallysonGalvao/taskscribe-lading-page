@@ -15,9 +15,12 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-24">
+    <section id="how-it-works" className="py-16 sm:py-24 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t("howItWorks.title")} subtitle={t("howItWorks.subtitle")} />
+        <SectionHeader
+          title={t("howItWorks.title")}
+          subtitle={t("howItWorks.subtitle")}
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {steps.map((step) => (

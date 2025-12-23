@@ -31,17 +31,20 @@ export default function HomePage() {
 
       <HeroSection releaseAssets={releaseAssets} />
       <PainPointsSection />
+      <HowItWorksSection />
       <FeaturesSection />
       <UseCasesSection />
-      <PricingSection />
-      <HowItWorksSection />
       <SecuritySection />
+      <PricingSection />
       <FaqSection onContactClick={handleOpenContact} />
       <CtaSection releaseAssets={releaseAssets} />
 
       <Footer onContactClick={handleOpenContact} />
 
-      <ContactFormDialog isOpen={contactFormOpen} onClose={handleCloseContact} />
+      <ContactFormDialog
+        isOpen={contactFormOpen}
+        onClose={handleCloseContact}
+      />
     </div>
   );
 }

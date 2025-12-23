@@ -11,7 +11,7 @@ export function SecuritySection() {
   const { t } = useTranslation();
 
   return (
-    <section id="security" className="py-16 sm:py-24 bg-secondary/30">
+    <section id="security" className="py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-center mb-4 sm:mb-6">
