@@ -80,6 +80,12 @@ const nextConfig: NextConfig = {
 
   // Enable strict mode for React
   reactStrictMode: true,
+
+  // Compress output for better performance
+  compress: true,
+
+  // Generate etags for caching
+  generateEtags: true,
 };
 
 export default nextConfig;

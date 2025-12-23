@@ -34,7 +34,9 @@ app.prepare().then(() => {
     })
     .listen(port, () => {
       console.log(
-        `> TaskScribe LP ready on http://${hostname}:${port} (${dev ? "development" : "production"})`
+        `> TaskScribe LP ready on http://${hostname}:${port} (${
+          dev ? "development" : "production"
+        })`
       );
     });
 });
