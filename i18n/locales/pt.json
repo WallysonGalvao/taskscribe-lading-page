@@ -243,7 +243,7 @@
       },
       "pricing": {
         "q": "Quanto custa o TaskScribe?",
-        "a": "Temos um plano gratuito com 5 transcrições grátis por mês. O plano Pro custa R$ 47/mês (ou R$ 470/ano com 17% de desconto) e oferece transcrições ilimitadas + features de IA para extração de tarefas."
+        "a": "Temos um plano gratuito com 5 transcrições por mês. O plano Pro custa R$ 47/mês (ou R$ 470/ano, equivalente a R$ 39/mês) e oferece: transcrições ilimitadas, tarefas de IA customizadas, NLP avançado com 92% de precisão, correção gramatical offline e extensões premium exclusivas."
       },
       "storage": {
         "q": "Meus dados ficam salvos onde?",
