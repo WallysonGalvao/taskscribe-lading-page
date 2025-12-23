@@ -28,7 +28,7 @@ export function FeatureCard({
   const iconBgColor = variant === "destructive" ? "bg-destructive/10" : "bg-accent/10";
   const iconColor = variant === "destructive" ? "text-destructive" : "text-accent";
   const borderClass =
-    variant === "destructive" ? "border-destructive/20" : "border-border hover:border-accent/50";
+    variant === "destructive" ? "border-border hover:border-destructive/20" : "border-border hover:border-accent/50";
 
   return (
     <Card

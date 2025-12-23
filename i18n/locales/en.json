@@ -170,13 +170,12 @@
       "period": "/month",
       "yearlyNote": "or $190/year (save 17%)",
       "features": {
-        "everything": "Everything in Free",
+        "everything": "Everything in Free +",
         "unlimited": "Unlimited transcriptions",
-        "noDuration": "No duration limit",
-        "ai": "AI task extraction",
-        "llms": "OpenAI + Gemini + Ollama",
-        "gpu": "Priority GPU acceleration",
-        "support": "Priority email support"
+        "customTasks": "Custom AI tasks",
+        "advancedNlp": "Advanced NLP (92% accuracy)",
+        "grammarCheck": "Offline grammar check",
+        "premiumExtensions": "Exclusive premium extensions"
       },
       "cta": "Subscribe to Pro"
     }

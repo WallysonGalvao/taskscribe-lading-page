@@ -21,6 +21,10 @@ export function PricingSection() {
   const proFeatures: PricingFeature[] = [
     { text: t("pricing.pro.features.everything"), isBold: true },
     { text: t("pricing.pro.features.unlimited") },
+    { text: t("pricing.pro.features.customTasks") },
+    { text: t("pricing.pro.features.advancedNlp") },
+    { text: t("pricing.pro.features.grammarCheck") },
+    { text: t("pricing.pro.features.premiumExtensions") },
   ];
 
   return (

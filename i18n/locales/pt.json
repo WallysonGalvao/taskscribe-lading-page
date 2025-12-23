@@ -170,13 +170,12 @@
       "period": "/mês",
       "yearlyNote": "ou R$ 470/ano (economize 17%)",
       "features": {
-        "everything": "Tudo do plano Grátis",
+        "everything": "Tudo do Free +",
         "unlimited": "Transcrições ilimitadas",
-        "noDuration": "Sem limite de duração",
-        "ai": "Extração de tarefas com IA",
-        "llms": "OpenAI + Gemini + Ollama",
-        "gpu": "Aceleração GPU prioritária",
-        "support": "Suporte prioritário via email"
+        "customTasks": "Tarefas de IA customizadas",
+        "advancedNlp": "NLP Avançado (92% precisão)",
+        "grammarCheck": "Correção gramatical offline",
+        "premiumExtensions": "Extensões premium exclusivas"
       },
       "cta": "Assinar Plano Pro"
     }
