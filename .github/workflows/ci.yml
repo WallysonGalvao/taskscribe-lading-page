@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-build:
+    name: Lint, Type Check & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Type Check
+        run: yarn tsc --noEmit
+
+      - name: Build
+        run: yarn build
+        env:
+          NEXT_PUBLIC_APP_NAME: TaskScribe
+          NEXT_PUBLIC_APP_URL: https://taskscribe.com.br
+
+  # Optional: Add tests when you have them
+  # test:
+  #   name: Run Tests
+  #   runs-on: ubuntu-latest
+  #   needs: lint-and-build
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #         cache: 'yarn'
+  #     - run: yarn install --frozen-lockfile
+  #     - run: yarn test

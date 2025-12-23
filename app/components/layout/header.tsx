@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -31,7 +32,7 @@ export function Header({ releaseAssets }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img src="/logo-icon.svg" alt="TaskScribe Logo" width={32} height={32} />
+            <Image src="/logo-icon.svg" alt="TaskScribe Logo" width={32} height={32} priority />
             <span className="text-xl font-bold text-foreground">{t("app.name")}</span>
           </div>
 
