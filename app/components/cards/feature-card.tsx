@@ -1,7 +1,9 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
+import { Expand } from "lucide-react";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import { Card } from "@/components/ui/card";
 
@@ -11,6 +13,7 @@ interface FeatureCardProps {
   description: string;
   imageSrc?: string;
   variant?: "accent" | "destructive";
+  onImageClick?: () => void;
 }
 
 export function FeatureCard({
@@ -19,7 +22,9 @@ export function FeatureCard({
   description,
   imageSrc,
   variant = "accent",
+  onImageClick,
 }: FeatureCardProps) {
+  const { t } = useTranslation();
   const iconBgColor = variant === "destructive" ? "bg-destructive/10" : "bg-accent/10";
   const iconColor = variant === "destructive" ? "text-destructive" : "text-accent";
   const borderClass =
@@ -41,11 +46,29 @@ export function FeatureCard({
         </h3>
       </div>
 
-      {/* Image */}
+      {/* Image - Clickable with hover effect */}
       {imageSrc ? (
-        <div className="mb-4 rounded-lg overflow-hidden">
-          <Image src={imageSrc} alt={title} width={1552} height={987} className="w-full h-auto" />
-        </div>
+        <button
+          type="button"
+          onClick={onImageClick}
+          className="relative mb-4 rounded-lg overflow-hidden w-full group cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-card"
+          aria-label={`View ${title} in fullscreen`}
+        >
+          <Image
+            src={imageSrc}
+            alt={title}
+            width={1552}
+            height={987}
+            className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+            <span className="flex items-center gap-2 text-white text-sm font-medium bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
+              <Expand className="w-4 h-4" />
+              {t("features.lightbox.clickToExpand")}
+            </span>
+          </div>
+        </button>
       ) : null}
 
       {/* Description */}

@@ -89,6 +89,19 @@
       "title": "Suporte Multilíngue",
       "description": "Interface em Português e Inglês. Transcrição em mais de 99 idiomas com Whisper."
     },
+    "lightbox": {
+      "clickToExpand": "Clique para expandir",
+      "navigate": "Navegar",
+      "zoom": "Zoom",
+      "close": "Fechar",
+      "previousImage": "Imagem anterior",
+      "nextImage": "Próxima imagem",
+      "zoomIn": "Aumentar zoom",
+      "zoomOut": "Diminuir zoom",
+      "closeGallery": "Fechar galeria",
+      "goTo": "Ir para",
+      "dragToMove": "Arraste para mover • Clique para diminuir zoom"
+    },
     "detailed": {
       "transcription": {
         "title": "Transcrição de Alta Precisão",

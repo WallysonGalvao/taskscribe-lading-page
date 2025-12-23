@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 
 import { FeatureCard } from "../cards";
 import { SectionHeader } from "../common";
+import { ImageLightbox } from "../ui/image-lightbox";
 
 import { cn } from "@/lib/utils";
 
@@ -93,6 +94,23 @@ export function FeaturesSection() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const { cardWidth, cardsPerPage, totalPages } = useCarouselDimensions();
+
+  // Lightbox state
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxInitialIndex, setLightboxInitialIndex] = useState(0);
+
+  // Build lightbox images array with titles and icons
+  const lightboxImages = FEATURES.map((feature) => ({
+    src: feature.image,
+    title: t(`features.${feature.key}.title`),
+    icon: feature.icon,
+  }));
+
+  // Handle image click to open lightbox
+  const handleImageClick = useCallback((index: number) => {
+    setLightboxInitialIndex(index);
+    setIsLightboxOpen(true);
+  }, []);
 
   // Calculate scroll position for a page
   const getScrollPositionForPage = useCallback(
@@ -185,85 +203,97 @@ export function FeaturesSection() {
   }, [cardsPerPage, cardWidth, totalPages]);
 
   return (
-    <section id="features" className="py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title={t("features.title")}
-          subtitle={t("features.subtitle")}
-        />
-      </div>
-
-      {/* Carousel container with controls */}
-      <div className="relative">
-        {/* Previous button - smaller on mobile */}
-        <button
-          onClick={() => {
-            handleUserInteraction();
-            goToPrevious();
-          }}
-          className="absolute left-2 sm:left-4 lg:left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card/90 backdrop-blur border border-border hover:border-accent/50 hover:bg-card flex items-center justify-center transition-all shadow-lg"
-          aria-label="Previous feature"
-        >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
-        </button>
-
-        {/* Next button - smaller on mobile */}
-        <button
-          onClick={() => {
-            handleUserInteraction();
-            goToNext();
-          }}
-          className="absolute right-2 sm:right-4 lg:right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card/90 backdrop-blur border border-border hover:border-accent/50 hover:bg-card flex items-center justify-center transition-all shadow-lg"
-          aria-label="Next feature"
-        >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
-        </button>
-
-        {/* Carousel horizontal - adjusted padding for mobile */}
-        <div
-          ref={carouselRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 scrollbar-none px-12 sm:px-16 lg:px-24 snap-x snap-mandatory"
-          onMouseDown={handleUserInteraction}
-          onTouchStart={handleUserInteraction}
-        >
-          {FEATURES.map((feature) => (
-            <div key={feature.key} className="snap-center">
-              <FeatureCard
-                icon={feature.icon}
-                title={t(`features.${feature.key}.title`)}
-                description={t(`features.${feature.key}.description`)}
-                imageSrc={feature.image}
-              />
-            </div>
-          ))}
+    <>
+      <section id="features" className="py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            title={t("features.title")}
+            subtitle={t("features.subtitle")}
+          />
         </div>
-      </div>
 
-      {/* Pagination dots */}
-      <div
-        className="flex justify-center gap-2 mt-4 sm:mt-6"
-        role="tablist"
-        aria-label="Feature pages"
-      >
-        {Array.from({ length: totalPages }).map((_, i) => (
+        {/* Carousel container with controls */}
+        <div className="relative">
+          {/* Previous button - smaller on mobile */}
           <button
-            key={i}
             onClick={() => {
               handleUserInteraction();
-              goToPage(i);
+              goToPrevious();
             }}
-            className={cn(
-              "h-2 rounded-full transition-all duration-300",
-              i === currentPage
-                ? "bg-accent w-6 sm:w-8"
-                : "bg-muted hover:bg-muted-foreground/30 w-2"
-            )}
-            role="tab"
-            aria-selected={i === currentPage}
-            aria-label={`Go to page ${i + 1}`}
-          />
-        ))}
-      </div>
-    </section>
+            className="absolute left-2 sm:left-4 lg:left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card/90 backdrop-blur border border-border hover:border-accent/50 hover:bg-card flex items-center justify-center transition-all shadow-lg"
+            aria-label="Previous feature"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
+          </button>
+
+          {/* Next button - smaller on mobile */}
+          <button
+            onClick={() => {
+              handleUserInteraction();
+              goToNext();
+            }}
+            className="absolute right-2 sm:right-4 lg:right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card/90 backdrop-blur border border-border hover:border-accent/50 hover:bg-card flex items-center justify-center transition-all shadow-lg"
+            aria-label="Next feature"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
+          </button>
+
+          {/* Carousel horizontal - adjusted padding for mobile */}
+          <div
+            ref={carouselRef}
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 scrollbar-none px-12 sm:px-16 lg:px-24 snap-x snap-mandatory"
+            onMouseDown={handleUserInteraction}
+            onTouchStart={handleUserInteraction}
+          >
+            {FEATURES.map((feature, index) => (
+              <div key={feature.key} className="snap-center">
+                <FeatureCard
+                  icon={feature.icon}
+                  title={t(`features.${feature.key}.title`)}
+                  description={t(`features.${feature.key}.description`)}
+                  imageSrc={feature.image}
+                  onImageClick={() => handleImageClick(index)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Pagination dots */}
+        <div
+          className="flex justify-center gap-2 mt-4 sm:mt-6"
+          role="tablist"
+          aria-label="Feature pages"
+        >
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                handleUserInteraction();
+                goToPage(i);
+              }}
+              className={cn(
+                "h-2 rounded-full transition-all duration-300",
+                i === currentPage
+                  ? "bg-accent w-6 sm:w-8"
+                  : "bg-muted hover:bg-muted-foreground/30 w-2"
+              )}
+              role="tab"
+              aria-selected={i === currentPage}
+              aria-label={`Go to page ${i + 1}`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Lightbox modal for fullscreen image viewing */}
+      <ImageLightbox
+        images={lightboxImages}
+        initialIndex={lightboxInitialIndex}
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+      />
+    </>
   );
 }
+
