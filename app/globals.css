@@ -52,7 +52,8 @@
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
+  --font-sans: "Sora", system-ui, -apple-system, "system-ui", "Segoe UI",
+    sans-serif, ui-sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
