@@ -1,0 +1,165 @@
+# =====================================
+# TaskScribe - Hostinger Apache Config
+# =====================================
+# Este arquivo configura o Apache para funcionar
+# corretamente com Next.js na Hostinger
+
+# =====================================
+# MIME Types - Corrige MIME type errors
+# =====================================
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType application/javascript .js
+    AddType application/javascript .mjs
+    AddType text/javascript .js
+    
+    # CSS
+    AddType text/css .css
+    
+    # JSON
+    AddType application/json .json
+    
+    # SVG
+    AddType image/svg+xml .svg .svgz
+    
+    # Fonts
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+    AddType font/ttf .ttf
+    AddType font/otf .otf
+    AddType font/eot .eot
+    
+    # Images
+    AddType image/webp .webp
+    AddType image/avif .avif
+    AddType image/png .png
+    AddType image/jpeg .jpg .jpeg
+    AddType image/gif .gif
+    AddType image/x-icon .ico
+    
+    # Text
+    AddType text/plain .txt
+    AddType text/html .html .htm
+    AddType text/xml .xml
+</IfModule>
+
+# =====================================
+# Headers - Security and Performance
+# =====================================
+<IfModule mod_headers.c>
+    # Disable MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # XSS Protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Clickjacking Protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Force correct MIME types for Next.js static files
+    <FilesMatch "\.js$">
+        Header set Content-Type "application/javascript; charset=UTF-8"
+    </FilesMatch>
+    
+    <FilesMatch "\.css$">
+        Header set Content-Type "text/css; charset=UTF-8"
+    </FilesMatch>
+    
+    <FilesMatch "\.json$">
+        Header set Content-Type "application/json; charset=UTF-8"
+    </FilesMatch>
+</IfModule>
+
+# =====================================
+# Compression - Improve Performance
+# =====================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+</IfModule>
+
+# =====================================
+# Caching - Static Assets
+# =====================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
+    # CSS and JavaScript (hashed filenames = long cache)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    
+    # HTML - short cache
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# =====================================
+# URL Rewriting - Handle SPA Routes
+# =====================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Remove www (optional - consistent URLs)
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+    
+    # Handle Next.js static files
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/_next/
+    RewriteRule ^(.*)$ /$1 [L]
+    
+    # Proxy all requests to Node.js (Phusion Passenger)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.html [L]
+</IfModule>
+
+# =====================================
+# Error Pages
+# =====================================
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# =====================================
+# Security - Disable directory listing
+# =====================================
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+    Require all denied
+</FilesMatch>
