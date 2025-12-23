@@ -18,126 +18,132 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://taskscribe.app";
 
 // Default locale for metadata
 const defaultLocale: Locale = "pt";
-const t = getTranslations(defaultLocale);
 
-export const metadata: Metadata = {
-  // Base URL for resolving relative URLs
-  metadataBase: new URL(BASE_URL),
+export async function generateMetadata(): Promise<Metadata> {
+  const t = getTranslations(defaultLocale);
+  const tEn = getTranslations("en");
 
-  // Basic metadata - using translations
-  title: {
-    default: t.seo.metadata.title,
-    template: t.seo.metadata.titleTemplate,
-  },
-  description: t.seo.metadata.description,
-  applicationName: "TaskScribe",
-  authors: [{ name: "Wallyson Galvão", url: "https://github.com/WallysonGalvao" }],
-  creator: "Wallyson Galvão",
-  publisher: "TaskScribe",
+  return {
+    // Base URL for resolving relative URLs
+    metadataBase: new URL(BASE_URL),
 
-  // Keywords for search - combining both languages for better coverage
-  keywords: [
-    // Portuguese
-    "transcrição de áudio",
-    "transcrição de vídeo",
-    "IA local",
-    "privacidade",
-    "identificação de falantes",
-    "transcrição offline",
-    "reuniões",
-    "legendas",
-    "LGPD",
-    // English
-    "audio transcription",
-    "video transcription",
-    "local AI",
-    "privacy",
-    "speaker identification",
-    "speech to text",
-    "offline transcription",
-    "meeting transcription",
-    "subtitles",
-    "GDPR",
-    // Common (both languages)
-    "whisper",
-    "faster-whisper",
-    "SRT",
-    "GPU acceleration",
-    "CUDA",
-  ],
-
-  // Canonical URL
-  alternates: {
-    canonical: BASE_URL,
-    languages: {
-      "pt-BR": `${BASE_URL}?lang=pt`,
-      "en-US": `${BASE_URL}?lang=en`,
+    // Basic metadata - using translations
+    title: {
+      default: t.seo.metadata.title,
+      template: t.seo.metadata.titleTemplate,
     },
-  },
-
-  // Open Graph (Facebook, LinkedIn, etc.) - using translations
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    alternateLocale: ["en_US"],
-    url: BASE_URL,
-    siteName: "TaskScribe",
-    title: t.seo.openGraph.title,
-    description: t.seo.openGraph.description,
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: t.seo.openGraph.imageAlt,
-        type: "image/png",
-      },
+    description: t.seo.metadata.description,
+    applicationName: "TaskScribe",
+    authors: [
+      { name: "Wallyson Galvão", url: "https://github.com/WallysonGalvao" },
     ],
-  },
+    creator: "Wallyson Galvão",
+    publisher: "TaskScribe",
 
-  // Twitter Cards - using English translations for international audience
-  twitter: {
-    card: "summary_large_image",
-    title: getTranslations("en").seo.twitter.title,
-    description: getTranslations("en").seo.twitter.description,
-    images: ["/twitter-image"],
-    creator: "@WallysonGalvao",
-  },
+    // Keywords for search - combining both languages for better coverage
+    keywords: [
+      // Portuguese
+      "transcrição de áudio",
+      "transcrição de vídeo",
+      "IA local",
+      "privacidade",
+      "identificação de falantes",
+      "transcrição offline",
+      "reuniões",
+      "legendas",
+      "LGPD",
+      // English
+      "audio transcription",
+      "video transcription",
+      "local AI",
+      "privacy",
+      "speaker identification",
+      "speech to text",
+      "offline transcription",
+      "meeting transcription",
+      "subtitles",
+      "GDPR",
+      // Common (both languages)
+      "whisper",
+      "faster-whisper",
+      "SRT",
+      "GPU acceleration",
+      "CUDA",
+    ],
 
-  // Robots
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+    // Canonical URL
+    alternates: {
+      canonical: BASE_URL,
+      languages: {
+        "pt-BR": `${BASE_URL}?lang=pt`,
+        "en-US": `${BASE_URL}?lang=en`,
+      },
+    },
+
+    // Open Graph (Facebook, LinkedIn, etc.) - using translations
+    openGraph: {
+      type: "website",
+      locale: "pt_BR",
+      alternateLocale: ["en_US"],
+      url: BASE_URL,
+      siteName: "TaskScribe",
+      title: t.seo.openGraph.title,
+      description: t.seo.openGraph.description,
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: t.seo.openGraph.imageAlt,
+          type: "image/png",
+        },
+      ],
+    },
+
+    // Twitter Cards - using English translations for international audience
+    twitter: {
+      card: "summary_large_image",
+      title: tEn.seo.twitter.title,
+      description: tEn.seo.twitter.description,
+      images: ["/twitter-image"],
+      creator: "@WallysonGalvao",
+    },
+
+    // Robots
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
 
-  // Verification (add your actual verification codes)
-  // verification: {
-  //   google: "your-google-verification-code",
-  //   yandex: "your-yandex-verification-code",
-  //   yahoo: "your-yahoo-verification-code",
-  // },
+    // Verification (add your actual verification codes)
+    // verification: {
+    //   google: "your-google-verification-code",
+    //   yandex: "your-yandex-verification-code",
+    //   yahoo: "your-yahoo-verification-code",
+    // },
 
-  // App-specific
-  category: "software",
-  classification: "Business Software",
+    // App-specific
+    category: "software",
+    classification: "Business Software",
 
-  // Other
-  referrer: "origin-when-cross-origin",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-};
+    // Other
+    referrer: "origin-when-cross-origin",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: [
@@ -164,13 +170,22 @@ export default function RootLayout({
 
         {/* Preconnect to external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
 
         {/* DNS Prefetch for external services */}
         <link rel="dns-prefetch" href="https://api.github.com" />
 
         {/* LLMs.txt for AI crawlers (AEO - Answer Engine Optimization) */}
-        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="LLMs.txt"
+        />
         <link
           rel="alternate"
           type="text/plain"
