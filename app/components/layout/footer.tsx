@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 interface FooterProps {
@@ -17,7 +16,8 @@ export function Footer({ onContactClick }: FooterProps) {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 flex items-center justify-center">
-              <Image src="/logo-icon.svg" alt="TaskScribe Logo" width={32} height={32} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-icon.svg" alt="TaskScribe Logo" width={32} height={32} />
             </div>
             <span className="font-semibold text-foreground">TaskScribe</span>
           </div>
