@@ -187,9 +187,9 @@
         "grammarCheck": "Offline grammar check",
         "premiumExtensions": "Exclusive premium extensions"
       },
-      "cta": "Subscribe to Pro"
+      "cta": "Download and Subscribe"
     },
-    "footer": "Cancel anytime. No commitment. Secure payment via Stripe."
+    "footer": "Subscription is made directly in the app. Download for free, try it out and subscribe when you want. Secure payment via Stripe."
   },
   "howItWorks": {
     "title": "Simple to use, powerful in results",
@@ -264,6 +264,10 @@
       "gpu": {
         "q": "Do I need a GPU to use it?",
         "a": "Not mandatory! TaskScribe works with CPU too, but will be slower. If you have an NVIDIA GPU with CUDA, processing can be up to 4x faster."
+      },
+      "subscription": {
+        "q": "How do I subscribe to the Pro plan?",
+        "a": "Subscription is made directly through the app. Download TaskScribe for free, try it with the Free plan, and when you want to upgrade to Pro, just go to the app settings. Payment is securely processed via Stripe."
       }
     },
     "stillHaveQuestions": "Still have questions?",

@@ -187,9 +187,9 @@
         "grammarCheck": "Correção gramatical offline",
         "premiumExtensions": "Extensões premium exclusivas"
       },
-      "cta": "Assinar Plano Pro"
+      "cta": "Baixar e Assinar"
     },
-    "footer": "Cancele a qualquer momento. Sem compromisso. Pagamento seguro via Stripe."
+    "footer": "A assinatura é feita diretamente no aplicativo. Baixe grátis, experimente e assine quando quiser. Pagamento seguro via Stripe."
   },
   "howItWorks": {
     "title": "Simples de usar, poderoso nos resultados",
@@ -264,6 +264,10 @@
       "gpu": {
         "q": "Preciso de GPU para usar?",
         "a": "Não é obrigatório! O TaskScribe funciona com CPU também, mas será mais lento. Se você tem GPU NVIDIA com CUDA, o processamento pode ser até 4x mais rápido."
+      },
+      "subscription": {
+        "q": "Como faço para assinar o plano Pro?",
+        "a": "A assinatura é feita diretamente pelo aplicativo. Baixe o TaskScribe gratuitamente, experimente com o plano Free, e quando quiser fazer upgrade para o Pro, basta acessar as configurações do app. O pagamento é processado de forma segura via Stripe."
       }
     },
     "stillHaveQuestions": "Ainda tem dúvidas?",

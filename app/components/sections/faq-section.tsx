@@ -12,6 +12,7 @@ const FAQ_KEYS = [
   "internet",
   "requirements",
   "pricing",
+  "subscription",
   "storage",
   "formats",
   "languages",
