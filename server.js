@@ -5,17 +5,29 @@
  * This file is used by Passenger on Hostinger
  */
 
+// Force production mode
+process.env.NODE_ENV = 'production';
+
 const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 
-const dev = process.env.NODE_ENV !== "production";
-const hostname = process.env.HOSTNAME || "localhost";
-const port = process.env.PORT || 3000;
+const dev = false; // Always production on Hostinger
+const hostname = process.env.HOSTNAME || "0.0.0.0";
+const port = parseInt(process.env.PORT || "3000", 10);
 
-// Initialize Next.js app
-const app = next({ dev, hostname, port });
+// Initialize Next.js app with explicit production mode
+const app = next({ 
+  dev,
+  hostname,
+  port,
+  dir: __dirname,
+});
 const handle = app.getRequestHandler();
+
+console.log("Starting TaskScribe LP server...");
+console.log("Environment:", process.env.NODE_ENV);
+console.log("Directory:", __dirname);
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
@@ -29,14 +41,14 @@ app.prepare().then(() => {
     }
   })
     .once("error", (err) => {
-      console.error(err);
+      console.error("Server error:", err);
       process.exit(1);
     })
-    .listen(port, () => {
-      console.log(
-        `> TaskScribe LP ready on http://${hostname}:${port} (${
-          dev ? "development" : "production"
-        })`
-      );
+    .listen(port, hostname, () => {
+      console.log(`> TaskScribe LP ready on http://${hostname}:${port} (production)`);
+      console.log(`> Process ID: ${process.pid}`);
     });
+}).catch((err) => {
+  console.error("Failed to start server:", err);
+  process.exit(1);
 });
