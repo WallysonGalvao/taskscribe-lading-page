@@ -22,10 +22,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "yarn"
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build application
         run: yarn build
@@ -47,7 +49,7 @@ jobs:
 
           # Create production node_modules (only dependencies, not devDependencies)
           cd deploy
-          yarn install --production --frozen-lockfile
+          yarn workspaces focus --production
           cd ..
 
       - name: Deploy via FTP
