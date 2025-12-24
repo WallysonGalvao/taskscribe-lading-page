@@ -271,7 +271,11 @@
       }
     },
     "stillHaveQuestions": "Ainda tem dúvidas?",
-    "contactUs": "Entre em Contato"
+    "contactUs": "Entre em Contato",
+    "aria": {
+      "openQuestion": "Abrir pergunta",
+      "closeQuestion": "Fechar pergunta"
+    }
   },
   "contact": {
     "title": "Entre em Contato",

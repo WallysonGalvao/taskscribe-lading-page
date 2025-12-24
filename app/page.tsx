@@ -29,15 +29,17 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Header releaseAssets={releaseAssets} />
 
-      <HeroSection releaseAssets={releaseAssets} />
-      <PainPointsSection />
-      <HowItWorksSection />
-      <FeaturesSection />
-      <UseCasesSection />
-      <SecuritySection />
-      <PricingSection />
-      <FaqSection onContactClick={handleOpenContact} />
-      <CtaSection releaseAssets={releaseAssets} />
+      <main>
+        <HeroSection releaseAssets={releaseAssets} />
+        <PainPointsSection />
+        <HowItWorksSection />
+        <FeaturesSection />
+        <UseCasesSection />
+        <SecuritySection />
+        <PricingSection />
+        <FaqSection onContactClick={handleOpenContact} />
+        <CtaSection releaseAssets={releaseAssets} />
+      </main>
 
       <Footer onContactClick={handleOpenContact} />
 

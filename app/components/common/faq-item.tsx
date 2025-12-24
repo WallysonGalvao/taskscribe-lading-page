@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { Card } from "@/components/ui/card";
 
@@ -12,11 +13,15 @@ interface FaqItemProps {
 }
 
 export function FaqItem({ question, answer, isOpen, onToggle }: FaqItemProps) {
+  const { t } = useTranslation();
+
   return (
     <Card className="p-4 sm:p-6 bg-card border-border">
       <button
         className="w-full text-left flex items-start justify-between gap-3 sm:gap-4"
         onClick={onToggle}
+        aria-label={isOpen ? t("faq.aria.closeQuestion") : t("faq.aria.openQuestion")}
+        aria-expanded={isOpen}
       >
         <h3 className="text-base sm:text-lg font-semibold text-foreground">{question}</h3>
         <ChevronDown

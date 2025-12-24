@@ -271,7 +271,11 @@
       }
     },
     "stillHaveQuestions": "Still have questions?",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "aria": {
+      "openQuestion": "Open question",
+      "closeQuestion": "Close question"
+    }
   },
   "contact": {
     "title": "Contact Us",
