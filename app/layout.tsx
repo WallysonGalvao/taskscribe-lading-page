@@ -14,7 +14,8 @@ import "./globals.css";
 
 const sora = Sora({ subsets: ["latin"], display: "swap" });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://taskscribe.app";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://taskscribe.com.br";
 
 // Default locale for metadata
 const defaultLocale: Locale = "pt";
@@ -125,11 +126,11 @@ export async function generateMetadata(): Promise<Metadata> {
     },
 
     // Verification (add your actual verification codes)
-    // verification: {
-    //   google: "your-google-verification-code",
-    //   yandex: "your-yandex-verification-code",
-    //   yahoo: "your-yahoo-verification-code",
-    // },
+    verification: {
+      google: "b0TqUAE_dQjCZUHkWcsT4UBWnPxBZBzb3Ot2sOR5J_M",
+      // yandex: "your-yandex-verification-code",
+      // yahoo: "your-yahoo-verification-code",
+    },
 
     // App-specific
     category: "software",
@@ -208,8 +209,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                var currentBuildId = '${process.env.NEXT_PUBLIC_BUILD_ID || Date.now()
-              }';
+                var currentBuildId = '${
+                  process.env.NEXT_PUBLIC_BUILD_ID || Date.now()
+                }';
                 var storedBuildId = localStorage.getItem('taskscribe_build_id');
                 
                 // If build ID changed, clear storage and reload

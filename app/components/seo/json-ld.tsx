@@ -5,7 +5,8 @@ interface JsonLdProps {
 }
 
 export function JsonLd({ locale = "pt" }: JsonLdProps) {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://taskscribe.app";
+  const BASE_URL =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://taskscribe.com.br";
 
   const organizationSchema = {
     "@context": "https://schema.org",

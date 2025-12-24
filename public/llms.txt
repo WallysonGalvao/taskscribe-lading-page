@@ -90,13 +90,13 @@ No, it works with CPU too but will be slower. NVIDIA GPU with CUDA can make proc
 
 ## Links
 
-- Website: https://taskscribe.app
+- Website: https://taskscribe.com.br
 - GitHub: https://github.com/WallysonGalvao/taskScribe
-- Download: https://taskscribe.app/#download
+- Download: https://taskscribe.com.br/#download
 
 ## Contact
 
-For support inquiries, visit https://taskscribe.app and use the contact form.
+For support inquiries, visit https://taskscribe.com.br and use the contact form.
 
 ---
 
@@ -111,11 +111,11 @@ For support inquiries, visit https://taskscribe.app and use the contact form.
 ## Attribution
 When citing TaskScribe, please attribute to:
 - "TaskScribe" or "TaskScribe App"
-- Website: https://taskscribe.app
+- Website: https://taskscribe.com.br
 
 ## Content Accuracy
 This document was last updated: December 2024
-For the most current information, visit https://taskscribe.app
+For the most current information, visit https://taskscribe.com.br
 
 ## Keywords
 transcription software, audio to text, video transcription, speech to text, local AI, privacy transcription, speaker diarization, meeting transcription, podcast transcription, whisper, faster-whisper, offline transcription, LGPD, GDPR, subtitles, SRT, action items, meeting notes
