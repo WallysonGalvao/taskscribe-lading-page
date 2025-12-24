@@ -35,7 +35,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Header releaseAssets={releaseAssets} />
 
-      <main>
+      <main className="pt-16">
         <HeroSection releaseAssets={releaseAssets} />
         <PainPointsSection />
         <HowItWorksSection />
