@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { getTranslations, type Locale } from "@/i18n/server";
 import "./globals.css";
+import { GoogleAnalytics } from "./components/analytics/google-analytics";
 
 const sora = Sora({ subsets: ["latin"], display: "swap" });
 
@@ -167,10 +168,16 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
         {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="b0TqUAE_dQjCZUHkWcsT4UBWnPxBZBzb3Ot2sOR5J_M" />
+        <meta
+          name="google-site-verification"
+          content="b0TqUAE_dQjCZUHkWcsT4UBWnPxBZBzb3Ot2sOR5J_M"
+        />
 
         {/* Schema.org JSON-LD - with locale support */}
         <JsonLd locale={defaultLocale} />
+
+        {/* Google Analytics  */}
+        <GoogleAnalytics />
 
         {/* Preconnect to external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
