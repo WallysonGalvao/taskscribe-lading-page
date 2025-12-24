@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "NODE_ENV=production next start -p ${PORT:-3000}",
     "lint": "npx eslint . --ext .ts,.tsx,.js,.jsx",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lighthouse": "lhci autorun",
+    "perf-test": "npm run build && npm run lighthouse"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

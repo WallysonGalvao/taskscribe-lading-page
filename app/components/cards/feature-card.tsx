@@ -59,6 +59,9 @@ export function FeatureCard({
             alt={title}
             width={1552}
             height={987}
+            loading="lazy"
+            quality={85}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
             className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
           />
           {/* Hover overlay */}

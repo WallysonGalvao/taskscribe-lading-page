@@ -17,7 +17,7 @@ export function Footer({ onContactClick }: FooterProps) {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 flex items-center justify-center">
-              <Image src="/logo-icon.svg" alt="TaskScribe Logo" width={32} height={32} />
+              <Image src="/logo-icon.svg" alt="TaskScribe Logo" width={32} height={32} loading="lazy" />
             </div>
             <span className="font-semibold text-foreground">TaskScribe</span>
           </div>

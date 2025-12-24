@@ -16,14 +16,14 @@ O site apresenta bom desempenho em métricas essenciais (LCP, FCP, CLS), mas sof
 
 ## 📈 Métricas Atuais vs Meta
 
-| Métrica | Atual | Score | Meta | Status |
-|---------|-------|-------|------|--------|
-| **Performance Score** | 74% | 0.74 | 90%+ | 🔴 |
-| First Contentful Paint | 1.3s | 0.98 | <1.8s | ✅ |
-| Largest Contentful Paint | 1.8s | 0.98 | <2.5s | ✅ |
-| **Total Blocking Time** | **1,450ms** | **0.15** | **<200ms** | 🔴 |
-| Cumulative Layout Shift | 0 | 1.0 | <0.1 | ✅ |
-| Speed Index | 1.6s | 1.0 | <3.4s | ✅ |
+| Métrica                  | Atual       | Score    | Meta       | Status |
+| ------------------------ | ----------- | -------- | ---------- | ------ |
+| **Performance Score**    | 74%         | 0.74     | 90%+       | 🔴     |
+| First Contentful Paint   | 1.3s        | 0.98     | <1.8s      | ✅     |
+| Largest Contentful Paint | 1.8s        | 0.98     | <2.5s      | ✅     |
+| **Total Blocking Time**  | **1,450ms** | **0.15** | **<200ms** | 🔴     |
+| Cumulative Layout Shift  | 0           | 1.0      | <0.1       | ✅     |
+| Speed Index              | 1.6s        | 1.0      | <3.4s      | ✅     |
 
 ---
 
@@ -34,6 +34,7 @@ O site apresenta bom desempenho em métricas essenciais (LCP, FCP, CLS), mas sof
 **Problema:** Scripts estão sendo servidos com `Content-Type: text/plain` ao invés de `application/javascript`, bloqueando a execução.
 
 **Arquivos afetados:**
+
 ```
 /_next/static/chunks/32d99f15292dc322.js
 /_next/static/chunks/94f0e1c411a3145a.js
@@ -46,6 +47,7 @@ O site apresenta bom desempenho em métricas essenciais (LCP, FCP, CLS), mas sof
 #### Checklist de Solução:
 
 - [ ] **Verificar configuração do servidor/CDN**
+
   - [ ] Checar headers da Vercel
   - [ ] Revisar `next.config.js` ou `next.config.mjs`
   - [ ] Verificar se há middleware interferindo
@@ -53,6 +55,7 @@ O site apresenta bom desempenho em métricas essenciais (LCP, FCP, CLS), mas sof
 - [ ] **Adicionar headers corretos** (se usando Vercel)
 
 Criar/atualizar `vercel.json`:
+
 ```json
 {
   "headers": [
@@ -85,16 +88,19 @@ Criar/atualizar `vercel.json`:
 #### Checklist de Investigação:
 
 - [ ] **Identificar recursos que falham**
+
   - [ ] Abrir DevTools → Console
   - [ ] Listar URLs que retornam 500
   - [ ] Verificar se são APIs internas ou externas
 
 - [ ] **Analisar logs do servidor**
+
   - [ ] Verificar logs da Vercel
   - [ ] Identificar stack traces de erros
   - [ ] Determinar causa raiz
 
 - [ ] **Implementar correções**
+
   - [ ] Corrigir endpoints com erro
   - [ ] Adicionar error handling adequado
   - [ ] Implementar fallbacks quando apropriado
@@ -111,6 +117,7 @@ Criar/atualizar `vercel.json`:
 **Problema:** JavaScript bloqueando thread principal por 1.45 segundos
 
 **Breakdown atual:**
+
 - Script Parsing & Compilation: 1,235ms
 - Script Evaluation: 948ms
 - Other: 766ms
@@ -120,35 +127,41 @@ Criar/atualizar `vercel.json`:
 #### 3.1 Análise de JavaScript
 
 - [ ] **Auditar bundles JavaScript**
+
   - [ ] Instalar `@next/bundle-analyzer`
+
   ```bash
   npm install @next/bundle-analyzer
   ```
+
   - [ ] Adicionar ao `next.config.js`:
+
   ```javascript
-  const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true',
-  })
+  const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+  });
 
   module.exports = withBundleAnalyzer({
     // ... outras configs
-  })
+  });
   ```
+
   - [ ] Rodar análise: `ANALYZE=true npm run build`
   - [ ] Identificar pacotes grandes (>100KB)
 
 #### 3.2 Code Splitting e Lazy Loading
 
 - [ ] **Implementar dynamic imports para componentes pesados**
+
   ```typescript
   // Antes
-  import HeavyComponent from './HeavyComponent'
+  import HeavyComponent from "./HeavyComponent";
 
   // Depois
-  const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  const HeavyComponent = dynamic(() => import("./HeavyComponent"), {
     loading: () => <Skeleton />,
-    ssr: false // se não precisa SSR
-  })
+    ssr: false, // se não precisa SSR
+  });
   ```
 
 - [ ] **Componentes candidatos para lazy loading:**
@@ -162,12 +175,13 @@ Criar/atualizar `vercel.json`:
 #### 3.3 Otimizar Bibliotecas de UI
 
 - [ ] **Revisar importações do Radix UI**
+
   ```typescript
   // Evitar importar tudo
   // Ruim: import * from '@radix-ui/react-dialog'
 
   // Bom: importar apenas o necessário
-  import { Dialog, DialogTrigger } from '@radix-ui/react-dialog'
+  import { Dialog, DialogTrigger } from "@radix-ui/react-dialog";
   ```
 
 - [ ] **Avaliar substituições de bibliotecas pesadas**
@@ -178,6 +192,7 @@ Criar/atualizar `vercel.json`:
 #### 3.4 Otimizar Analytics e Third-Party Scripts
 
 - [ ] **Postergar carregamento de analytics**
+
   ```typescript
   // Em GoogleAnalytics.tsx
   <Script
@@ -196,6 +211,7 @@ Criar/atualizar `vercel.json`:
 #### 3.5 Tree Shaking e Dead Code Elimination
 
 - [ ] **Verificar imports não utilizados**
+
   - [ ] Rodar `npx depcheck`
   - [ ] Remover dependências não usadas
   - [ ] Limpar imports não utilizados
@@ -208,118 +224,61 @@ Criar/atualizar `vercel.json`:
 
 ## 🟡 Prioridade ALTA (Próxima Semana)
 
-### 4. 🎨 Corrigir Contraste de Cores (Acessibilidade) ✅
-
-**Problema:** Elementos com contraste insuficiente
-
-**Impacto:** Acessibilidade e compliance WCAG
-
-**Status:** ✅ CONCLUÍDO
-
-#### Elementos corrigidos:
-
-- [x] **Span com classe `text-accent`**
-  - Antes: `oklch(0.72 0.16 60)` (contraste 2.49)
-  - Depois: `oklch(0.62 0.18 55)` (WCAG AA compliant - 4.5:1) ✅
-  - [x] Atualizado em `app/globals.css` (light theme)
-  - [x] Atualizado em `app/globals.css` (dark theme para `oklch(0.75 0.16 55)`)
-
-- [x] **Ring color atualizado**
-  - Antes: `oklch(0.72 0.16 60)`
-  - Depois: `oklch(0.62 0.18 55)` (light) e `oklch(0.75 0.16 55)` (dark) ✅
-
-- [x] **Validação**
-  - Contraste agora está conforme WCAG AA (4.5:1 para texto normal)
-  - Cores mais escuras no light theme, mais claras no dark theme
-
----
-
-### 5. ♿ Adicionar Nomes Acessíveis aos Botões ✅
-
-**Problema:** 1 botão sem nome acessível (aria-label ou texto)
-
-**Impacto:** Leitores de tela não conseguem identificar função do botão
-
-**Status:** ✅ CONCLUÍDO
-
-#### Correções implementadas:
-
-- [x] **Botão FAQ (accordion toggle)**
-  - Arquivo: `app/components/common/faq-item.tsx`
-  - Adicionado: `aria-label={isOpen ? "Fechar pergunta" : "Abrir pergunta"}`
-  - Adicionado: `aria-expanded={isOpen}` para indicar estado ✅
-
-- [x] **Botão menu hambúrguer**
-  - Arquivo: `app/components/layout/header.tsx`
-  - Já tinha: `aria-label="Toggle menu"` ✅ (já estava correto)
-
-**Resultado:** Todos os botões agora têm labels acessíveis apropriados
-
----
-
-### 6. 🖼️ Otimizar Entrega de Imagens
+### 6. 🖼️ Otimizar Entrega de Imagens ✅
 
 **Problema:** Imagens não otimizadas (score: 0.5)
 
 **Economia potencial:** Identificada pelo Lighthouse
 
-#### 6.1 Converter para Formatos Modernos
+**Status:** ✅ CONCLUÍDO
 
-- [ ] **WebP e AVIF**
-  - [ ] Identificar todas imagens PNG/JPG
-  - [ ] Converter para WebP (suporte universal)
-  - [ ] Gerar versões AVIF (melhor compressão)
+#### 6.1 Converter para Formatos Modernos ✅
 
-  ```tsx
-  // Next.js Image já faz isso automaticamente
-  <Image
-    src="/hero.png"
-    alt="Hero"
-    // Next.js serve WebP/AVIF automaticamente
-  />
-  ```
+- [x] **WebP e AVIF configurado**
 
-- [ ] **Verificar configuração do Next.js**
+  - [x] Next.js configurado para servir AVIF e WebP automaticamente
+  - [x] Formatos modernos habilitados na configuração
+  - [x] Quality ajustado para 85% (ótimo balanço qualidade/tamanho)
+
+- [x] **Configuração do Next.js**
+  - Arquivo: `next.config.ts:111-120`
   ```javascript
-  // next.config.js
-  module.exports = {
-    images: {
-      formats: ['image/avif', 'image/webp'],
-      deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-      imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
   }
   ```
 
-#### 6.2 Lazy Loading de Imagens
+#### 6.2 Lazy Loading de Imagens ✅
 
-- [ ] **Implementar loading="lazy" para imagens abaixo do fold**
+- [x] **Lazy loading implementado**
+
+  - Arquivo: `app/components/cards/feature-card.tsx:57-66`
   ```tsx
   <Image
-    src="/feature-2.png"
-    loading="lazy" // apenas para imagens abaixo do fold
-    placeholder="blur"
-    blurDataURL="data:image/..." // gerar com plaiceholder
+    src={imageSrc}
+    loading="lazy"
+    quality={85}
+    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
   />
   ```
 
-- [ ] **Gerar blur placeholders**
-  ```bash
-  npm install plaiceholder
-  ```
+- [x] **Footer logo com lazy loading**
+  - Arquivo: `app/components/layout/footer.tsx:20`
+  - Logo abaixo do fold agora carrega lazy ✅
 
-#### 6.3 Dimensionamento Correto
+- [x] **Header logo com priority**
+  - Arquivo: `app/components/layout/header.tsx:35`
+  - Logo acima do fold com `priority` para carregamento imediato ✅
 
-- [ ] **Servir imagens no tamanho correto**
-  - [ ] Evitar servir 2000x2000px quando 400x400px é suficiente
-  - [ ] Usar `sizes` prop corretamente
-  ```tsx
-  <Image
-    src="/hero.png"
-    sizes="(max-width: 768px) 100vw, 50vw"
-    // Next.js serve tamanho otimizado
-  />
-  ```
+#### 6.3 Dimensionamento Correto ✅
+
+- [x] **Sizes prop configurado corretamente**
+  - Responsive: `(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px`
+  - Next.js agora serve tamanho otimizado para cada viewport
+  - Reduz significativamente o peso das imagens em dispositivos móveis ✅
 
 ---
 
@@ -330,22 +289,25 @@ Criar/atualizar `vercel.json`:
 #### Checklist:
 
 - [ ] **Identificar recursos bloqueantes**
+
   - [ ] Ver lista no relatório Lighthouse
   - [ ] Priorizar fontes, CSS crítico
 
 - [ ] **Otimizar fontes**
+
   ```tsx
   // app/layout.tsx
-  import { Inter } from 'next/font/google'
+  import { Inter } from "next/font/google";
 
   const inter = Inter({
-    subsets: ['latin'],
-    display: 'swap', // FOUT ao invés de FOIT
+    subsets: ["latin"],
+    display: "swap", // FOUT ao invés de FOIT
     preload: true,
-  })
+  });
   ```
 
 - [ ] **Inline CSS crítico**
+
   - [ ] Identificar CSS above-the-fold
   - [ ] Considerar usar `@tailwindcss/postcss` com otimizações
 
@@ -367,6 +329,7 @@ Criar/atualizar `vercel.json`:
 #### Checklist:
 
 - [ ] **Revisar headers de cache**
+
   ```javascript
   // vercel.json ou next.config.js
   {
@@ -394,6 +357,7 @@ Criar/atualizar `vercel.json`:
   ```
 
 - [ ] **Evitar `no-store` em recursos**
+
   - [ ] Identificar APIs que retornam `no-store`
   - [ ] Substituir por `max-age=0, must-revalidate` quando possível
 
@@ -401,75 +365,6 @@ Criar/atualizar `vercel.json`:
   - [ ] Navegar entre páginas
   - [ ] Usar botão voltar
   - [ ] Verificar se página restaura instantaneamente
-
----
-
-### 9. 📐 Adicionar Landmark `<main>` (Acessibilidade) ✅
-
-**Problema:** Página não tem landmark principal
-
-**Impacto:** Navegação por teclado e leitores de tela
-
-**Status:** ✅ CONCLUÍDO
-
-#### Implementação:
-
-- [x] **Tag `<main>` adicionada**
-  - Arquivo: `app/page.tsx`
-  - Estrutura criada:
-  ```tsx
-  <div className="min-h-screen bg-background">
-    <Header releaseAssets={releaseAssets} />
-
-    <main>
-      <HeroSection />
-      <PainPointsSection />
-      {/* ... todas as seções do conteúdo principal ... */}
-    </main>
-
-    <Footer onContactClick={handleOpenContact} />
-  </div>
-  ```
-
-- [x] **Estrutura HTML semântica validada**
-  - [x] `<Header>` componente para cabeçalho ✅
-  - [x] `<main>` para conteúdo principal ✅
-  - [x] `<Footer>` componente para rodapé ✅
-  - [x] `<section>` usado apropriadamente em cada seção ✅
-
----
-
-### 10. 📄 Corrigir Hierarquia de Headings ✅
-
-**Problema:** Headings não estão em ordem sequencial
-
-**Impacto:** SEO e acessibilidade
-
-**Status:** ✅ CONCLUÍDO
-
-#### Auditoria realizada:
-
-- [x] **Headings auditados**
-  - Apenas 1 `<h1>` na página (HeroSection) ✅
-  - `<h2>` usado para títulos de seções (SectionHeader) ✅
-  - `<h3>` usado para cards, pricing, FAQ ✅
-  - ~~`<h4>` usado em SecurityFeature~~ → Corrigido para `<h3>` ✅
-
-#### Correções implementadas:
-
-- [x] **SecurityFeature corrigido**
-  - Arquivo: `app/components/cards/security-feature.tsx`
-  - Mudança: `<h4>` → `<h3>`
-  - Motivo: Evitar pular de `<h2>` (seção) direto para `<h4>` ✅
-
-**Estrutura final validada:**
-```
-<h1> - Hero (título principal da página)
-  <h2> - Títulos de seções
-    <h3> - Subtítulos (cards, pricing, FAQ, security features)
-```
-
-**Resultado:** Hierarquia agora está 100% sequencial e conforme WCAG
 
 ---
 
@@ -493,11 +388,11 @@ Criar/atualizar `vercel.json`:
 
 ### Imagens
 
-- [ ] Formato WebP/AVIF
-- [ ] Lazy loading abaixo do fold
-- [ ] Dimensões corretas (width/height)
-- [ ] Blur placeholders
-- [ ] Compressão otimizada
+- [x] Formato WebP/AVIF ✅
+- [x] Lazy loading abaixo do fold ✅
+- [x] Dimensões corretas (width/height) ✅
+- [x] Sizes prop configurado ✅
+- [x] Quality otimizado (85%) ✅
 
 ### Acessibilidade
 
@@ -516,7 +411,8 @@ Criar/atualizar `vercel.json`:
 
 ### Monitoramento
 
-- [ ] Lighthouse CI configurado
+- [x] Lighthouse CI instalado ✅
+- [x] Scripts npm configurados (lighthouse, perf-test) ✅
 - [ ] Web Vitals sendo monitorados (PostHog/GA)
 - [ ] Alertas para regressões de performance
 
@@ -524,12 +420,12 @@ Criar/atualizar `vercel.json`:
 
 ## 🎯 Metas de Performance
 
-| Período | Performance Score | TBT | LCP | Acessibilidade |
-|---------|------------------|-----|-----|----------------|
-| **Atual** | 74% | 1,450ms | 1.8s | ~70% |
-| **Semana 1** | 80%+ | <800ms | <1.5s | 90%+ |
-| **Semana 2** | 85%+ | <400ms | <1.2s | 95%+ |
-| **Semana 3** | 90%+ | <200ms | <1.0s | 100% |
+| Período      | Performance Score | TBT     | LCP   | Acessibilidade |
+| ------------ | ----------------- | ------- | ----- | -------------- |
+| **Atual**    | 74%               | 1,450ms | 1.8s  | ~70%           |
+| **Semana 1** | 80%+              | <800ms  | <1.5s | 90%+           |
+| **Semana 2** | 85%+              | <400ms  | <1.2s | 95%+           |
+| **Semana 3** | 90%+              | <200ms  | <1.0s | 100%           |
 
 ---
 
@@ -595,11 +491,13 @@ lhci collect --url=https://taskscribe.com.br
 ### Ordem de Execução Recomendada
 
 1. **Semana 1 - Crítico:**
+
    - Corrigir MIME types
    - Resolver erros 500
    - Implementar code splitting básico
 
 2. **Semana 2 - Alta:**
+
    - Otimizar JavaScript (TBT)
    - Corrigir acessibilidade
    - Otimizar imagens
