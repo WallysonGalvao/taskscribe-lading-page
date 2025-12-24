@@ -121,6 +121,15 @@
     /* Better tap highlight */
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* Ensure interactive elements have pointer cursor */
+  button,
+  a[href],
+  [role="button"],
+  input[type="submit"],
+  input[type="button"] {
+    cursor: pointer;
+  }
 }
 
 /* Improve touch targets */
