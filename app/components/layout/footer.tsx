@@ -31,7 +31,7 @@ export function Footer({ onContactClick }: FooterProps) {
           <div className="flex items-center">
             <button
               onClick={onContactClick}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 px-4"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 px-4 cursor-pointer"
             >
               {t("footer.links.support")}
             </button>

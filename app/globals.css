@@ -108,6 +108,8 @@
     scroll-behavior: smooth;
     /* Prevent horizontal overflow on mobile */
     overflow-x: hidden;
+    /* Scroll padding to account for sticky header (64px = h-16) */
+    scroll-padding-top: 64px;
   }
 
   body {
