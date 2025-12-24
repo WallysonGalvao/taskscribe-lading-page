@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+// Bundle analyzer for performance optimization
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const securityHeaders = [
   // Previne XSS attacks
   {
@@ -54,28 +59,13 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Prevent caching of HTML pages - including CDN cache
+        // HTML pages - allow back/forward cache with revalidation
         source: "/:path*",
         headers: [
           ...securityHeaders,
           {
             key: "Cache-Control",
-            value:
-              "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
-          },
-          // CDN-specific headers to prevent edge caching
-          {
-            key: "Surrogate-Control",
-            value: "no-store",
-          },
-          {
-            key: "CDN-Cache-Control",
-            value: "no-store",
-          },
-          // Vercel/Edge specific
-          {
-            key: "Vercel-CDN-Cache-Control",
-            value: "no-store",
+            value: "public, max-age=0, must-revalidate",
           },
         ],
       },
@@ -85,6 +75,34 @@ const nextConfig: NextConfig = {
         headers: securityHeaders.filter(
           (header) => header.key !== "Content-Security-Policy"
         ),
+      },
+      {
+        // Ensure JavaScript files are served with correct MIME type
+        source: "/_next/static/:path*.js",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/javascript; charset=utf-8",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Ensure MJS files are served with correct MIME type
+        source: "/_next/static/:path*.mjs",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/javascript; charset=utf-8",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
       {
         // Don't apply CSP to static assets
@@ -120,4 +138,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

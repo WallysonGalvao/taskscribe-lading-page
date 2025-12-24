@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
+import dynamic from "next/dynamic";
 
 import {
-  ContactFormDialog,
   CtaSection,
   FaqSection,
   FeaturesSection,
@@ -17,6 +17,12 @@ import {
   UseCasesSection,
   useReleaseAssets,
 } from "./components";
+
+// Lazy load ContactFormDialog (only loaded when user clicks contact button)
+const ContactFormDialog = dynamic(
+  () => import("./components/forms/contact-form-dialog").then((mod) => ({ default: mod.ContactFormDialog })),
+  { ssr: false }
+);
 
 export default function HomePage() {
   const [contactFormOpen, setContactFormOpen] = React.useState(false);
