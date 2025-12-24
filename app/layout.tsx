@@ -166,6 +166,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="b0TqUAE_dQjCZUHkWcsT4UBWnPxBZBzb3Ot2sOR5J_M" />
+
         {/* Schema.org JSON-LD - with locale support */}
         <JsonLd locale={defaultLocale} />
 
