@@ -20,21 +20,25 @@ export interface UseReleaseAssetsReturn {
 }
 
 const DEFAULT_DOWNLOAD_URLS: ReleaseAssets = {
-  Windows: `${GITHUB_RELEASE_BASE}/latest/download/TaskScribe_0.1.0_x64-setup.exe`,
-  "Mac Intel": `${GITHUB_RELEASE_BASE}/latest/download/TaskScribe_0.1.0_x64.dmg`,
-  "Mac Apple Silicon": `${GITHUB_RELEASE_BASE}/latest/download/TaskScribe_0.1.0_aarch64.dmg`,
-  Linux: `${GITHUB_RELEASE_BASE}/latest/download/TaskScribe_0.1.0_amd64.AppImage`,
+  Windows: `${GITHUB_RELEASE_BASE}/latest`,
+  "Mac Intel": `${GITHUB_RELEASE_BASE}/latest`,
+  "Mac Apple Silicon": `${GITHUB_RELEASE_BASE}/latest`,
+  Linux: `${GITHUB_RELEASE_BASE}/latest`,
 };
 
 export function useReleaseAssets(): UseReleaseAssetsReturn {
-  const [releaseAssets, setReleaseAssets] = React.useState<Partial<ReleaseAssets>>({});
+  const [releaseAssets, setReleaseAssets] = React.useState<
+    Partial<ReleaseAssets>
+  >({});
   const [releaseVersion, setReleaseVersion] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const fetchLatestRelease = async () => {
       try {
-        const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`);
+        const response = await fetch(
+          `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`
+        );
         if (!response.ok) {
           console.warn("No published release found, using fallback URLs");
           return;
@@ -45,13 +49,19 @@ export function useReleaseAssets(): UseReleaseAssetsReturn {
         const assets: Partial<ReleaseAssets> = {};
         for (const asset of data.assets || []) {
           const name = asset.name.toLowerCase();
-          if (name.includes("x64-setup.exe") || name.includes("x64-setup.nsis")) {
+          if (
+            name.includes("x64-setup.exe") ||
+            name.includes("x64-setup.nsis")
+          ) {
             assets["Windows"] = asset.browser_download_url;
           } else if (name.includes("x64.dmg")) {
             assets["Mac Intel"] = asset.browser_download_url;
           } else if (name.includes("aarch64.dmg")) {
             assets["Mac Apple Silicon"] = asset.browser_download_url;
-          } else if (name.includes("appimage") || name.includes("amd64.appimage")) {
+          } else if (
+            name.includes("appimage") ||
+            name.includes("amd64.appimage")
+          ) {
             assets["Linux"] = asset.browser_download_url;
           }
         }
@@ -68,9 +78,11 @@ export function useReleaseAssets(): UseReleaseAssetsReturn {
 
   const downloadUrls: ReleaseAssets = {
     Windows: releaseAssets["Windows"] || DEFAULT_DOWNLOAD_URLS["Windows"],
-    "Mac Intel": releaseAssets["Mac Intel"] || DEFAULT_DOWNLOAD_URLS["Mac Intel"],
+    "Mac Intel":
+      releaseAssets["Mac Intel"] || DEFAULT_DOWNLOAD_URLS["Mac Intel"],
     "Mac Apple Silicon":
-      releaseAssets["Mac Apple Silicon"] || DEFAULT_DOWNLOAD_URLS["Mac Apple Silicon"],
+      releaseAssets["Mac Apple Silicon"] ||
+      DEFAULT_DOWNLOAD_URLS["Mac Apple Silicon"],
     Linux: releaseAssets["Linux"] || DEFAULT_DOWNLOAD_URLS["Linux"],
   };
 
@@ -90,18 +102,25 @@ export function useReleaseAssets(): UseReleaseAssetsReturn {
 }
 
 // Analytics tracking utility
-export const trackEvent = (eventName: string, properties?: Record<string, unknown>) => {
+export const trackEvent = (
+  eventName: string,
+  properties?: Record<string, unknown>
+) => {
   if (
     typeof window !== "undefined" &&
     (
       window as unknown as {
-        posthog?: { capture: (name: string, properties?: Record<string, unknown>) => void };
+        posthog?: {
+          capture: (name: string, properties?: Record<string, unknown>) => void;
+        };
       }
     ).posthog
   ) {
     (
       window as unknown as {
-        posthog: { capture: (name: string, properties?: Record<string, unknown>) => void };
+        posthog: {
+          capture: (name: string, properties?: Record<string, unknown>) => void;
+        };
       }
     ).posthog.capture(eventName, properties);
   }
